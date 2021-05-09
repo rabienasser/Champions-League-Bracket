@@ -1,0 +1,419 @@
+:root {
+    --color: rgb(90, 247, 220)
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    width: 100%;
+    height: 100%;
+    color: white;
+}
+
+/* body::after {
+    content: '';
+    top: 0;
+    left: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.3);
+} */
+
+body * {
+    z-index: 1;
+}
+
+
+/* NAVIGATION BAR */
+nav {
+    background: rgb(0, 0, 75);
+}
+
+.nav-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.left-nav {
+    margin-top: 20px;
+    width: 10%;
+    display: flex;
+    justify-content: center;
+}
+
+.logo {
+    height: 60px;
+    width: 60px;
+    cursor: pointer;
+}
+
+.middle-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-image: linear-gradient(90deg, rgb(3, 55, 144), rgb(1, 33, 117));
+    width: 75%;
+    border-left: 10px solid var(--color);
+    transform: matrix(1, 0, -0.176327, 1, 0, 0);
+    transform-origin: 314.562px 80px;
+    padding: 20px;
+}
+
+.middle-nav h1 {
+    color: var(--color);
+    font-size: 30px;
+}
+
+.presented-by {
+    display: flex;
+    margin-right: 20px;
+}
+
+.presented-by p {
+    margin: auto;
+    margin-right: 15px;
+}
+
+.gazprom {
+    background: white;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.right-nav {
+    display: flex;
+    width: 12%;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.right-nav {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.log-in-btn {
+    padding: 8px;
+    background-color: transparent;
+    border-color: var(--color);
+    color: var(--color);
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.bottom-nav {
+    margin: 20px 30px 0px 30px;
+    font-size: 16px;
+    border-bottom: #333 1px solid;
+}
+
+.bottom-nav ul{
+    display: flex;
+    list-style: none;
+}
+
+.bottom-nav ul i{
+   padding-left: 4px;
+}
+
+.bottom-nav li {
+    padding: 0 15px 15px 15px;
+    margin-right: 10px;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+}
+
+.bottom-nav li:hover {
+    border-bottom: 3px solid var(--color);
+    vertical-align: baseline;
+}
+
+.bottom-nav ul li.selected {
+    font-size: 20px;
+    color: var(--color);
+    text-transform: uppercase;
+}
+
+li.selected:hover {
+border: none;
+}
+
+li.current {
+    border-bottom: 3px solid var(--color);
+}
+
+/* BRACKET AREA */
+.bracket {
+    height: 100%;
+    width: 100%;
+    background: url('./images/Champions\ league\ background2.jpg') no-repeat center center/cover;
+    background-attachment: fixed;
+}
+
+.bracket-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 80%;
+    margin: auto;
+}
+
+.bracket-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.bracket-text {
+    text-align: left;
+    margin-bottom: 30px;
+}
+.bracket-text h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+    margin-top: 30px;
+}
+
+.columns {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-gap: 20px;
+    margin-bottom: 30px;
+}
+
+.bracket-column {
+    text-align: center;
+    border-top: 2px solid grey;
+}
+
+.stage {
+    text-align: left;
+    margin-top: 5px;
+    margin-bottom: 50px;
+    font-size: 21px;
+}
+
+.game-box {
+    display: flex;
+    flex-direction: column;
+    border-width: 1px;
+    border-style: solid;
+    border-image:   linear-gradient(
+        rgb(90, 247, 220),
+        rgb(0,0,0,0)
+      ) 1;
+      margin-bottom: 25px;
+}
+
+.team-logo {
+    width: 30px;
+    height: 30px;
+}
+
+.circle {
+    border-radius: 50%;
+    border: 1px solid white;
+    background-color: transparent;
+    height: 25px;
+    width: 25px;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+}
+
+.team-row {
+    display: flex;
+    justify-content:space-between;
+    background: rgb(255, 255, 255, 0.1);
+    background: rgb(0, 0, 75, 0.7);
+    cursor: pointer;
+}
+
+.team {
+    display: flex;
+}
+
+.team-name {
+    margin: auto;
+    margin-left: 10px;
+}
+
+.view-details {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    color: var(--color);
+    background: rgb(0, 0, 75);
+    box-shadow: rgba(255, 255, 255, 0.2) 0px 1px 0px 0px inset;
+    cursor: pointer;
+}
+
+.semi-final-container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.semi1 {
+    position: absolute;
+    width: 100%;
+    top: 10%;
+}
+
+.semi2 {
+    position: absolute;
+    width: 100%;
+    top: 55%;
+}
+
+.final-container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.final-content {
+    position: absolute;
+    width: 100%;
+    top: 5%;
+}
+
+.final-content h2 {
+    font-size: 21px;
+}
+
+
+/* ADVERTISEMENT */
+.advertisement {
+    position: relative;
+    width: 728px;
+    height: 90px;
+    margin: auto;
+    margin-bottom: 30px;
+    cursor: pointer;
+    background: url('./images/ad-photo.jpg') no-repeat center center/cover;
+}
+
+.ad-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.advertisement::after {
+    content: '';
+    top: 0;
+    left: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.4);
+}
+
+
+.advertisement h2 {
+    font-size: 35px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.advertisement button {
+    padding: 10px;
+    background-color: rgb(0, 0, 75);
+    color: white;
+    border-image-slice: 1;
+    border-width: 2px;
+    border-image-source: linear-gradient(to left, #743ad5, var(--color));
+    font-size: 15px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+/* FOOTER */
+footer {
+    width: 100%;
+    height: 100%;
+    background: url('./images/CL\ background3.jpg') no-repeat center center/cover;
+}
+
+/* footer::after {
+    content: '';
+    top: 0;
+    left: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.3);
+} */
+
+/* footer * {
+    z-index: 1;
+} */
+
+.foot-container {
+    height: 100vh;
+    width: 80%;
+    margin: auto;
+}
+
+.foot-lists {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 70px 0;
+}
+
+.foot-list {
+    list-style: none;
+}
+
+.foot-list li {
+    font-size: 14px;
+    cursor: pointer;
+    padding: 2px 0;
+}
+
+.foot-head {
+    margin-bottom: 10px;
+}
+
+.social {
+    display: flex;
+    align-items: center;
+    justify-content:flex-start;
+    margin-bottom: 50px;
+}
+
+.social-links {
+    display: flex;
+    list-style: none;
+    margin-left: 10px;
+}
+
+.social-links li {
+    padding: 10px;
+    margin: 0 5px;
+    font-size: 20px;
+    border: 1px white solid;
+    border-radius: 100%;
+    cursor: pointer;
+}
