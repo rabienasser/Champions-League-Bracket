@@ -223,6 +223,11 @@ li.current {
     height: 30px;
 }
 
+.shield {
+    font-size: 30px;
+    color: rgb(127, 128, 175);
+}
+
 .circle {
     border-radius: 50%;
     border: 1px solid white;
@@ -244,6 +249,12 @@ li.current {
     background: rgb(0, 0, 75, 0.7);
     cursor: pointer;
 }
+
+.empty-row {
+    background: rgb(48, 49, 110);
+    cursor: default;
+}
+
 
 .team {
     display: flex;
