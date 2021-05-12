@@ -444,3 +444,94 @@ footer {
     border-radius: 100%;
     cursor: pointer;
 }
+
+
+/* PopUp */
+.pop-up-container {
+    /* display: none; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pop-up {
+    box-shadow: 0 15px 10px 3px rgba(0,0,0,0.1);
+    padding: 20px;
+    text-align: center;
+    width: 375px;
+    height: fit-content;
+    background: white;
+    color:#00004B;
+    position: relative;
+}
+
+.pop-up button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: #00004B;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.pop-up h3 {
+    font-size: 18px;
+}
+
+.selected-team {
+    color: #0d3aff;
+}
+
+.pop-up .match {
+    display: flex;
+    align-items: center;
+    justify-content:space-evenly;
+    border-bottom: 1px solid rgb(217,219,231);
+    margin: 20px 0;
+    font-size: 30px;
+}
+
+.pop-up .fixture-logo {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 10px;
+}
+
+.pop-up .fixture {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.fixture:first-of-type {
+    border-bottom: 1px solid rgb(217,219,231);
+}
+
+.recent-game {
+    display: flex;
+    align-items: center;
+    justify-content:space-evenly;
+    padding: 10px 0;
+    cursor: pointer;
+}
+
+.recent-game i {
+    position: absolute;
+    right: 15px;
+}
+
+.selected-team-logo {
+   background-color: rgb(121,146,255);
+   border-radius: 50%;
+   width: 50px;
+   height: 50px;
+}
