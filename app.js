@@ -1,31 +1,7 @@
 const popUp = document.querySelector('.pop-up-container')
-const popUpCloseBtn = document.querySelector('.pop-up-close')
+// const popUpCloseBtn = document.querySelector('.pop-up-close')
 const viewDetails = document.querySelectorAll('.view-details')
 
-// const teamRow = document.querySelectorAll('.team-row')
-// const circles = document.querySelectorAll('.circle')
-
-// teamRow.forEach(row => {
-//     // const id = Math.floor(Math.random() * 100)
-//     row.addEventListener('click', () => {
-//         row.classList.add('selected-row')
-//             blah();
-//         // if(row.classList.contains('selected-row')) {
-//         //     const circle = document.querySelectorAll('.circle')
-//         //     circle.forEach(circle => {
-//         //         circle.classList.add('checked-circle')
-//         //         circle.innerHTML = '<i class="fas fa-check"></i>'
-//         //     })
-//         // }
-//     })
-// })
-
-// function blah() {
-//     circles.forEach(circle => {
-//             circle.classList.add('checked-circle')
-//             circle.innerHTML = 'X'
-//     })
-// }
 
 const s1 = document.querySelector('.s-1')
 const s2 = document.querySelector('.s-2')
@@ -41,6 +17,7 @@ const team7 = document.querySelector('.team-7')
 const team8 = document.querySelector('.team-8')
 const bracketContent = document.querySelector('.bracket-content')
 
+
 bracketContent.addEventListener('click', addRow);
 
 function addRow(e) {
@@ -50,9 +27,6 @@ function addRow(e) {
             s1.innerHTML = target.innerHTML;
             s1.classList.remove('empty-row')
             quarterFinalOne();
-            // const checkedCircle = target.firstElementChild.nextElementSibling;
-            // checkedCircle.classList.add('checked-circle')
-            // checkedCircle.innerHTML = '<i class="fas fa-check"></i>'
         } 
         else if(target.classList.contains('q-2')) {
             s2.innerHTML = target.innerHTML;
@@ -74,11 +48,15 @@ function addRow(e) {
     e.stopPropagation()
 }
 
-function quarterFinalOne() {
+
+
+function quarterFinalOne(item) {
 
    if(s1.innerHTML === team1.innerHTML) {
        team1.classList.add('selected-row')
        team2.classList.remove('selected-row')
+    //    item.classList.add('checked-circle')
+    //    item.innerHTML = '<i class="fas fa-check"></i>'
    } 
     else if(s1.innerHTML === team2.innerHTML) {
     team2.classList.add('selected-row')
@@ -123,27 +101,100 @@ function quarterFinalFour() {
 }
 
 
-// function selectRow() {
-//         team1.forEach(team => {
-//             if(s1.innerHTML )
-//             team1.classList.add('selected-row')
-//         })
 
-//     team2.addEventListener('click', () => {
-//         team2.classList.add('selected-row')
-//         team1.classList.remove('selected-row')
-//     })
-// }
-
-// selectRow();
-
-
-
+// Create view details
 viewDetails.forEach(match => {
     match.addEventListener('click', () => {
-        popUp.style.display = 'flex';
-        popUpCloseBtn.addEventListener('click', () => {
-            popUp.style.display = 'none'
-        })
+        createPopUp();
+        loadFixture();
     })
 })
+
+
+// CREATE POPUP SCREEN OF MATCH PREVIEW
+function createPopUp() {
+
+    const popUpContainer = document.querySelector('.pop-up-container')
+    const popUp = document.createElement('div')
+    popUp.classList.add('pop-up-overlay')
+    popUp.innerHTML = `
+    <div class="pop-up">
+                    <button class="pop-up-close">X</button>
+                    <h3>You picked<br>
+                    <span class="selected-team">Bayern</span> to beat Paris</h3>
+                    <div class="match">
+                        <img src="./images/bayern munich.png" class="team-logo fixture-logo selected-team-logo">
+                        <p>VS</p>
+                        <img src="./images/PSG.png" class="team-logo fixture-logo">
+                    </div>
+                    <div class="recent-results">
+                        <p>Recent fixtures</p>
+                        <div class="fixture">
+                            <div class="date">WED 7 APR</div>
+                            <div class="recent-game">
+                                <div class="team">
+                                    <img src="./images/bayern munich.png" class="team-logo">
+                                    <p class="team-name">Bayern</p> 
+                                </div>
+                                <p>3 - 2</p>
+                                <div class="team">
+                                    <img src="./images/psg.png" class="team-logo">
+                                    <p class="team-name">PSG</p> 
+                                </div>
+                                <i class="fas fa-angle-right"></i>
+                            </div>
+                        </div>
+                        <div class="fixture">
+                            <div class="date">TUES 13 APR</div>
+                            <div class="recent-game">
+                                <div class="team">
+                                    <img src="./images/bayern munich.png" class="team-logo">
+                                    <p class="team-name">Bayern</p> 
+                                </div>
+                                <p>0 - 2</p>
+                                <div class="team">
+                                    <img src="./images/psg.png" class="team-logo">
+                                    <p class="team-name">PSG</p> 
+                                </div>
+                                <i class="fas fa-angle-right"></i>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+    `;
+
+    popUpContainer.appendChild(popUp)
+
+    // POP-UP CLOSE BUTTON USING EVENT DELEGATION
+    popUp.addEventListener('click', (e) => {
+        if(e.target.classList.contains('pop-up-close')) {
+            popUp.style.display = 'none'
+        }
+    })
+
+}
+
+
+function loadFixture() {
+    const xhr = new XMLHttpRequest();
+
+    xhr.open('GET', 'fixtures.json', true)
+
+    xhr.onload = function() {
+        if(this.status === 200) {
+            console.log(this.responseText)
+        }
+    }
+
+    xhr.send();
+}
+
+
+// viewDetails.forEach(match => {
+//     match.addEventListener('click', () => {
+//         popUp.style.display = 'flex';
+//         popUpCloseBtn.addEventListener('click', () => {
+//             popUp.style.display = 'none'
+//         })
+//     })
+// })
