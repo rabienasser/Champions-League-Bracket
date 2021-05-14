@@ -48,7 +48,8 @@ nav {
 
 .left-nav {
     margin-top: 20px;
-    width: 10%;
+    /* width: 10%; */
+    width: 146.675px;
     display: flex;
     justify-content: center;
 }
@@ -95,16 +96,16 @@ nav {
 
 .right-nav {
     display: flex;
-    width: 12%;
-    justify-content: space-evenly;
+    /* width: 12%; */
+    width: 146.675px;
+    text-size-adjust: 100%;
+    justify-content:space-around;
     align-items: center;
     margin-top: 20px;
-}
-
-.right-nav {
     font-size: 20px;
     cursor: pointer;
 }
+
 
 .log-in-btn {
     padding: 8px;
@@ -168,7 +169,7 @@ li.current {
     display: flex;
     flex-direction: column;
     height: 100%;
-    width: 80%;
+    width: 75%;
     margin: auto;
 }
 
@@ -189,8 +190,8 @@ li.current {
 
 .columns {
     display: grid;
-    grid-template-columns: repeat(3, auto);
-    grid-gap: 20px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-gap: 30px;
     margin-bottom: 30px;
 }
 

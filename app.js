@@ -104,78 +104,13 @@ function quarterFinalFour() {
 
 // Create view details
 viewDetails.forEach(match => {
-    match.addEventListener('click', () => {
-        createPopUp();
-        loadFixture();
-    })
+    match.addEventListener('click', createPopUp)
 })
+    
 
 
 // CREATE POPUP SCREEN OF MATCH PREVIEW
 function createPopUp() {
-
-    const popUpContainer = document.querySelector('.pop-up-container')
-    const popUp = document.createElement('div')
-    popUp.classList.add('pop-up-overlay')
-    popUp.innerHTML = `
-    <div class="pop-up">
-                    <button class="pop-up-close">X</button>
-                    <h3>You picked<br>
-                    <span class="selected-team">Bayern</span> to beat Paris</h3>
-                    <div class="match">
-                        <img src="./images/bayern munich.png" class="team-logo fixture-logo selected-team-logo">
-                        <p>VS</p>
-                        <img src="./images/PSG.png" class="team-logo fixture-logo">
-                    </div>
-                    <div class="recent-results">
-                        <p>Recent fixtures</p>
-                        <div class="fixture">
-                            <div class="date">WED 7 APR</div>
-                            <div class="recent-game">
-                                <div class="team">
-                                    <img src="./images/bayern munich.png" class="team-logo">
-                                    <p class="team-name">Bayern</p> 
-                                </div>
-                                <p>3 - 2</p>
-                                <div class="team">
-                                    <img src="./images/psg.png" class="team-logo">
-                                    <p class="team-name">PSG</p> 
-                                </div>
-                                <i class="fas fa-angle-right"></i>
-                            </div>
-                        </div>
-                        <div class="fixture">
-                            <div class="date">TUES 13 APR</div>
-                            <div class="recent-game">
-                                <div class="team">
-                                    <img src="./images/bayern munich.png" class="team-logo">
-                                    <p class="team-name">Bayern</p> 
-                                </div>
-                                <p>0 - 2</p>
-                                <div class="team">
-                                    <img src="./images/psg.png" class="team-logo">
-                                    <p class="team-name">PSG</p> 
-                                </div>
-                                <i class="fas fa-angle-right"></i>
-                            </div>
-                        </div>
-                    </div>
-            </div>
-    `;
-
-    popUpContainer.appendChild(popUp)
-
-    // POP-UP CLOSE BUTTON USING EVENT DELEGATION
-    popUp.addEventListener('click', (e) => {
-        if(e.target.classList.contains('pop-up-close')) {
-            popUp.style.display = 'none'
-        }
-    })
-
-}
-
-
-function loadFixture() {
     const xhr = new XMLHttpRequest();
 
     xhr.open('GET', 'fixtures.json', true)
@@ -183,11 +118,78 @@ function loadFixture() {
     xhr.onload = function() {
         if(this.status === 200) {
             console.log(this.responseText)
-        }
+        } 
+
+        const fixture = JSON.parse(this.responseText)
+        console.log(fixture.team2)
+
+        const output = `
+        <div class="pop-up">
+        <button class="pop-up-close">X</button>
+        <h3>You picked<br>
+        <span class="selected-team">Bayern</span> to beat Paris</h3>
+        <div class="match">
+            <img src="./images/bayern munich.png" class="team-logo fixture-logo selected-team-logo">
+            <p>VS</p>
+            <img src="./images/PSG.png" class="team-logo fixture-logo">
+        </div>
+        <div class="recent-results">
+            <p>Recent fixtures</p>
+            <div class="fixture">
+                <div class="date">WED 7 APR</div>
+                <div class="recent-game">
+                    <div class="team">
+                        <img src="./images/bayern munich.png" class="team-logo">
+                        <p class="team-name">Bayern</p> 
+                    </div>
+                    <p>3 - 2</p>
+                    <div class="team">
+                        <img src="./images/psg.png" class="team-logo">
+                        <p class="team-name">PSG</p> 
+                    </div>
+                    <i class="fas fa-angle-right"></i>
+                </div>
+            </div>
+            <div class="fixture">
+                <div class="date">TUES 13 APR</div>
+                <div class="recent-game">
+                    <div class="team">
+                        <img src="./images/bayern munich.png" class="team-logo">
+                        <p class="team-name">Bayern</p> 
+                    </div>
+                    <p>${fixture.score2}</p>
+                    <div class="team">
+                        <img src="./images/psg.png" class="team-logo">
+                        <p class="team-name">PSG</p> 
+                    </div>
+                    <i class="fas fa-angle-right"></i>
+                </div>
+            </div>
+        </div>
+        </div>
+        `;
+    
+        const popUpContainer = document.querySelector('.pop-up-container')
+        const popUp = document.createElement('div')
+        popUp.classList.add('pop-up-overlay')
+        popUp.innerHTML = output
+        popUpContainer.appendChild(popUp)
     }
 
     xhr.send();
+
+    // POP-UP CLOSE BUTTON USING EVENT DELEGATION
+    popUp.addEventListener('click', (e) => {
+        if(e.target.classList.contains('pop-up-close')) {
+            popUp.style.display = 'none'
+        }
+    })
 }
+
+
+// function loadFixture() {
+
+// }
 
 
 // viewDetails.forEach(match => {
