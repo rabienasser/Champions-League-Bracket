@@ -429,7 +429,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content:flex-start;
-    margin-bottom: 50px;
+    margin-bottom: 80px;
 }
 
 .social-links {
@@ -445,6 +445,14 @@ footer {
     border: 1px white solid;
     border-radius: 100%;
     cursor: pointer;
+}
+
+.privacy {
+    font-size: 13px;
+}
+
+.copyright {
+    margin-bottom: 10px;
 }
 
 

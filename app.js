@@ -187,10 +187,6 @@ function createPopUp() {
 }
 
 
-// function loadFixture() {
-
-// }
-
 
 // viewDetails.forEach(match => {
 //     match.addEventListener('click', () => {
