@@ -1,5 +1,4 @@
 const popUp = document.querySelector('.pop-up-container')
-// const viewDetails = document.querySelectorAll('.view-details')
 const popUpContainer = document.querySelector('.pop-up-container')
 const bracketContent = document.querySelector('.bracket-content')
 const s1 = document.querySelector('.s-1')
@@ -19,12 +18,19 @@ const final_2 = [];
 
 
 // ADD SEMI-FINAL TEAMS
-function addSemiTeams(quarter, semi, semiArray) {
+function addSemiTeams(quarter, semi, semiArray, topTeam, bottomTeam) {
     bracketContent.addEventListener('click', (e) => {
         const target = e.target
     
         if(target !== e.currentTarget) {
             if(target.classList.contains(quarter)) {
+                if(target.classList.contains(topTeam)) {
+                    target.classList.add('selected-row')
+                    target.nextElementSibling.classList.remove('selected-row')
+                } else if(target.classList.contains(bottomTeam)) {
+                    target.classList.add('selected-row')
+                    target.previousElementSibling.classList.remove('selected-row')
+                }
                 semiArray.push(target)
                 semi.innerHTML = target.innerHTML;
                 semi.classList.remove('empty-row')
@@ -37,12 +43,19 @@ function addSemiTeams(quarter, semi, semiArray) {
 }
 
 // ADD FINAL TEAMS
-function addFinalTeams(semi, final, finalArray) {
+function addFinalTeams(semi, final, finalArray, topTeam, bottomTeam) {
     bracketContent.addEventListener('click', (e) => {
         const target = e.target
     
         if(target !== e.currentTarget) {
             if(target.classList.contains(semi) && !target.classList.contains('empty-row')) {
+                if(target.classList.contains(topTeam)) {
+                    target.classList.add('selected-row')
+                    target.nextElementSibling.classList.remove('selected-row')
+                } else if(target.classList.contains(bottomTeam)) {
+                    target.classList.add('selected-row')
+                    target.previousElementSibling.classList.remove('selected-row')
+                }
                 finalArray.push(target)
                 final.innerHTML = target.innerHTML;
                 final.classList.remove('empty-row')
@@ -79,19 +92,19 @@ function resetFinalTeams(gameBox, final) {
 
 // ADD SEMI-FINAL AND FINAL TEAMS TO DOM
 function addSemiOne() {
-    addSemiTeams('q-1', s1, semi_1)
+    addSemiTeams('q-1', s1, semi_1, 'team-1', 'team-2')
 }
 function addSemiTwo() {
-    addSemiTeams('q-2', s2, semi_2)
+    addSemiTeams('q-2', s2, semi_2, 'team-3', 'team-4')
 }
 function addSemiThree() {
-    addSemiTeams('q-3', s3, semi_3)
+    addSemiTeams('q-3', s3, semi_3, 'team-5', 'team-6')
 }
 function addSemiFour() {
-    addSemiTeams('q-4', s4, semi_4)
+    addSemiTeams('q-4', s4, semi_4, 'team-7', 'team-8')
 }
 function addFinalOne() {
-    addFinalTeams('s-one', f1, final_1)
+    addFinalTeams('s-one', f1, final_1, 'team-1', 'team-3')
 }
 function addFinalTwo() {
     addFinalTeams('s-two', f2, final_2)
@@ -113,22 +126,6 @@ function finalCall() {
     addFinalTwo();
 }
 finalCall();
-
-
-function test() {
-
-}
-
-
-
-// Create view details
-// viewDetailsArray = Array.from(viewDetails)
-
-// viewDetailsArray.forEach(match => {
-//     match.addEventListener('click', createPopUp)
-// })
-
-
 
 
 // CREATE POPUP SCREEN OF MATCH PREVIEW
@@ -159,6 +156,12 @@ function createPopUp() {
                         console.log(data)
                         const team_1 = data.response[0].teams.away;
                         const team_2 = data.response[0].teams.home;
+                        const date_1 = data.response[0].fixture.date.substr(0,10);
+                        const date_2 = data.response[1].fixture.date.substr(0,10);
+                        const score_1 = data.response[0].goals.away;
+                        const score_2 = data.response[0].goals.home;
+                        const score_3 = data.response[1].goals.away;
+                        const score_4 = data.response[1].goals.home;
                 
                         const popUp = document.createElement('div')
                         popUp.classList.add('pop-up-overlay')
@@ -175,31 +178,31 @@ function createPopUp() {
                         <div class="recent-results">
                             <p>Recent fixtures</p>
                             <div class="fixture">
-                                <div class="date">WED 7 APR</div>
+                                <div class="date">${date_1}</div>
                                 <div class="recent-game">
                                     <div class="team">
                                         <img src="${team_1.logo}" class="team-logo">
                                         <p class="team-name">${team_1.name}</p> 
                                     </div>
-                                    <p>3 - 2</p>
+                                    <p>${score_1} - ${score_2}</p>
                                     <div class="team">
-                                        <img src="./images/psg.png" class="team-logo">
-                                        <p class="team-name">PSG</p> 
+                                        <img src="${team_2.logo}" class="team-logo">
+                                        <p class="team-name">${team_2.name}</p> 
                                     </div>
                                     <i class="fas fa-angle-right"></i>
                                 </div>
                             </div>
                             <div class="fixture">
-                                <div class="date">TUES 13 APR</div>
+                                <div class="date">${date_2}</div>
                                 <div class="recent-game">
                                     <div class="team">
-                                        <img src="./images/bayern munich.png" class="team-logo">
-                                        <p class="team-name">Bayern</p> 
+                                        <img src="${team_2.logo}" class="team-logo">
+                                        <p class="team-name">${team_2.name}</p> 
                                     </div>
-                                    <p>2 - 3</p>
+                                    <p>${score_3} - ${score_4}</p>
                                     <div class="team">
-                                        <img src="" class="team-logo">
-                                        <p class="team-name">PSG</p> 
+                                        <img src="${team_1.logo}" class="team-logo">
+                                        <p class="team-name">${team_1.name}</p> 
                                     </div>
                                     <i class="fas fa-angle-right"></i>
                                 </div>
