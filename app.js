@@ -1,106 +1,113 @@
 const popUp = document.querySelector('.pop-up-container')
-// const popUpCloseBtn = document.querySelector('.pop-up-close')
 const viewDetails = document.querySelectorAll('.view-details')
-
-
+const popUpContainer = document.querySelector('.pop-up-container')
+const bracketContent = document.querySelector('.bracket-content')
 const s1 = document.querySelector('.s-1')
 const s2 = document.querySelector('.s-2')
 const s3 = document.querySelector('.s-3')
 const s4 = document.querySelector('.s-4')
-const team1 = document.querySelector('.team-1')
-const team2 = document.querySelector('.team-2')
-const team3 = document.querySelector('.team-3')
-const team4 = document.querySelector('.team-4')
-const team5 = document.querySelector('.team-5')
-const team6 = document.querySelector('.team-6')
-const team7 = document.querySelector('.team-7')
-const team8 = document.querySelector('.team-8')
-const bracketContent = document.querySelector('.bracket-content')
+const f1 = document.querySelector('.f-1')
+const f2 = document.querySelector('.f-2')
+
+const semi_1 = [];
+const semi_2 = [];
+const semi_3 = [];
+const semi_4 = [];
+const final_1 = [];
+const final_2 = [];
 
 
-bracketContent.addEventListener('click', addRow);
 
-function addRow(e) {
-    const target = e.target;
-    if(e.target !== e.currentTarget) {
-        if(target.classList.contains('q-1')) {
-            s1.innerHTML = target.innerHTML;
-            s1.classList.remove('empty-row')
-            quarterFinalOne();
-        } 
-        else if(target.classList.contains('q-2')) {
-            s2.innerHTML = target.innerHTML;
-            s2.classList.remove('empty-row')
-            quarterFinalTwo()
+// ADD SEMI-FINAL TEAMS
+function addSemiTeams(quarter, semi, semiArray) {
+    bracketContent.addEventListener('click', (e) => {
+        const target = e.target
+    
+        if(target !== e.currentTarget) {
+            if(target.classList.contains(quarter)) {
+                semiArray.push(target)
+                semi.innerHTML = target.innerHTML;
+                semi.classList.remove('empty-row')
+            }
         }
-        else if(target.classList.contains('q-3')) {
-            s3.innerHTML = target.innerHTML;
-            s3.classList.remove('empty-row')
-            quarterFinalThree()
+
+        e.stopPropagation();
+    });
+
+}
+
+// ADD FINAL TEAMS
+function addFinalTeams(semi, final, finalArray) {
+    bracketContent.addEventListener('click', (e) => {
+        const target = e.target
+    
+        if(target !== e.currentTarget) {
+            if(target.classList.contains(semi)) {
+                finalArray.push(target)
+                final.innerHTML = target.innerHTML;
+                final.classList.remove('empty-row')
+            } 
+
+            reSelect('q-1')
         }
-        else if(target.classList.contains('q-4')) {
-            s4.innerHTML = target.innerHTML;
-            s4.classList.remove('empty-row')
-            quarterFinalFour()
+
+
+        e.stopPropagation();
+    });
+
+}
+
+function reSelect(gameBox) {
+        if(!final.classList.contains('empty-row') && target.classList.contains(gameBox) && target.innerHTML !== final.innerHTML) {
+            final.innerHTML = `
+            <i class="fas fa-shield-alt team-logo shield"></i>
+            `;
+            final.classList.add('empty-row')
         }
-    }
-
-    e.stopPropagation()
 }
 
 
-
-function quarterFinalOne(item) {
-
-   if(s1.innerHTML === team1.innerHTML) {
-       team1.classList.add('selected-row')
-       team2.classList.remove('selected-row')
-    //    item.classList.add('checked-circle')
-    //    item.innerHTML = '<i class="fas fa-check"></i>'
-   } 
-    else if(s1.innerHTML === team2.innerHTML) {
-    team2.classList.add('selected-row')
-    team1.classList.remove('selected-row')
-   }
+// ADD SEMI-FINAL AND FINAL TEAMS TO DOM
+function addSemiOne() {
+    addSemiTeams('q-1', s1, semi_1)
 }
-
-function quarterFinalTwo() {
-
-   if(s2.innerHTML === team3.innerHTML) {
-       team3.classList.add('selected-row')
-       team4.classList.remove('selected-row')
-   } 
-    else if(s2.innerHTML === team4.innerHTML) {
-    team4.classList.add('selected-row')
-    team3.classList.remove('selected-row')
-   }
+function addSemiTwo() {
+    addSemiTeams('q-2', s2, semi_2)
 }
-
-function quarterFinalThree() {
-
-   if(s3.innerHTML === team5.innerHTML) {
-       team5.classList.add('selected-row')
-       team6.classList.remove('selected-row')
-   } 
-    else if(s3.innerHTML === team6.innerHTML) {
-    team6.classList.add('selected-row')
-    team5.classList.remove('selected-row')
-   }
+function addSemiThree() {
+    addSemiTeams('q-3', s3, semi_3)
 }
-
-function quarterFinalFour() {
-
-   if(s4.innerHTML === team7.innerHTML) {
-       team7.classList.add('selected-row')
-       team8.classList.remove('selected-row')
-   } 
-    else if(s4.innerHTML === team8.innerHTML) {
-    team8.classList.add('selected-row')
-    team7.classList.remove('selected-row')
-   }
+function addSemiFour() {
+    addSemiTeams('q-4', s4, semi_4)
+}
+function addFinalOne() {
+    addFinalTeams('s-one', f1, final_1)
+}
+function addFinalTwo() {
+    addFinalTeams('s-two', f2, final_2)
 }
 
 
+// CALL SEMI FINAL AND FINAL FUNCTIONS
+function semiCall() {
+    addSemiOne();
+    addSemiTwo();
+    addSemiThree();
+    addSemiFour();
+}
+semiCall();
+
+
+function finalCall() {
+    addFinalOne();
+    addFinalTwo();
+}
+finalCall();
+
+
+function test() {
+
+}
 
 // Create view details
 viewDetails.forEach(match => {
@@ -111,19 +118,21 @@ viewDetails.forEach(match => {
 
 // CREATE POPUP SCREEN OF MATCH PREVIEW
 function createPopUp() {
-    const xhr = new XMLHttpRequest();
+    fetch("https://api-football-v1.p.rapidapi.com/v3/teams?name=FC%20Porto", {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-key": "576022dfeamsh7ad87ea6befc8bep1031c3jsnf1d4181025ac",
+		"x-rapidapi-host": "api-football-v1.p.rapidapi.com"
+	}
+})
+    .then(response => response.json())
+    .then(data => {
+        console.log(data)
+        const team = data.response[0].team;
 
-    xhr.open('GET', 'fixtures.json', true)
-
-    xhr.onload = function() {
-        if(this.status === 200) {
-            console.log(this.responseText)
-        } 
-
-        const fixture = JSON.parse(this.responseText)
-        console.log(fixture.team2)
-
-        const output = `
+        const popUp = document.createElement('div')
+        popUp.classList.add('pop-up-overlay')
+        popUp.innerHTML =  `
         <div class="pop-up">
         <button class="pop-up-close">X</button>
         <h3>You picked<br>
@@ -139,8 +148,8 @@ function createPopUp() {
                 <div class="date">WED 7 APR</div>
                 <div class="recent-game">
                     <div class="team">
-                        <img src="./images/bayern munich.png" class="team-logo">
-                        <p class="team-name">Bayern</p> 
+                        <img src="${team.logo}" class="team-logo">
+                        <p class="team-name">${team.name}</p> 
                     </div>
                     <p>3 - 2</p>
                     <div class="team">
@@ -157,7 +166,7 @@ function createPopUp() {
                         <img src="./images/bayern munich.png" class="team-logo">
                         <p class="team-name">Bayern</p> 
                     </div>
-                    <p>${fixture.score2}</p>
+                    <p>2 - 3</p>
                     <div class="team">
                         <img src="./images/psg.png" class="team-logo">
                         <p class="team-name">PSG</p> 
@@ -168,15 +177,14 @@ function createPopUp() {
         </div>
         </div>
         `;
-    
-        const popUpContainer = document.querySelector('.pop-up-container')
-        const popUp = document.createElement('div')
-        popUp.classList.add('pop-up-overlay')
-        popUp.innerHTML = output
         popUpContainer.appendChild(popUp)
+    })
+    .catch(err => {
+        console.error(err);
+    });
+    
     }
 
-    xhr.send();
 
     // POP-UP CLOSE BUTTON USING EVENT DELEGATION
     popUp.addEventListener('click', (e) => {
@@ -184,7 +192,6 @@ function createPopUp() {
             popUp.style.display = 'none'
         }
     })
-}
 
 
 
