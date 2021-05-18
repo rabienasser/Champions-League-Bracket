@@ -104,10 +104,10 @@ function addSemiFour() {
     addSemiTeams('q-4', s4, semi_4, 'team-7', 'team-8')
 }
 function addFinalOne() {
-    addFinalTeams('s-one', f1, final_1, 'team-1', 'team-3')
+    addFinalTeams('s-one', f1, final_1, 's-team-1', 's-team-2')
 }
 function addFinalTwo() {
-    addFinalTeams('s-two', f2, final_2)
+    addFinalTeams('s-two', f2, final_2, 's-team-3', 's-team-4')
 }
 
 
