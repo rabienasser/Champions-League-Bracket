@@ -48,22 +48,32 @@ function addFinalTeams(semi, final, finalArray) {
                 final.classList.remove('empty-row')
             } 
 
-            reSelect('q-1')
+            resetFinalTeams('q-1', final)
+            resetFinalTeams('q-2', final)
+            resetFinalTeams('q-3', final)
+            resetFinalTeams('q-4', final)
         }
 
 
         e.stopPropagation();
     });
-
 }
 
-function reSelect(gameBox) {
-        if(!final.classList.contains('empty-row') && target.classList.contains(gameBox) && target.innerHTML !== final.innerHTML) {
-            final.innerHTML = `
-            <i class="fas fa-shield-alt team-logo shield"></i>
-            `;
-            final.classList.add('empty-row')
+
+// RESET FINAL TEAMS WHEN SEMI-FINAL TEAM IS CHANGED
+function resetFinalTeams(gameBox, final) {
+    bracketContent.addEventListener('click', (e) => {
+        const target = e.target
+
+        if(target !== e.currentTarget) {
+            if(!final.classList.contains('empty-row') && target.classList.contains(gameBox) && target.innerHTML !== final.innerHTML) {
+                final.innerHTML = `
+                <i class="fas fa-shield-alt team-logo shield"></i>
+                `;
+                final.classList.add('empty-row')
+            }
         }
+    })
 }
 
 
@@ -108,6 +118,8 @@ finalCall();
 function test() {
 
 }
+
+
 
 // Create view details
 viewDetails.forEach(match => {
@@ -192,14 +204,3 @@ function createPopUp() {
             popUp.style.display = 'none'
         }
     })
-
-
-
-// viewDetails.forEach(match => {
-//     match.addEventListener('click', () => {
-//         popUp.style.display = 'flex';
-//         popUpCloseBtn.addEventListener('click', () => {
-//             popUp.style.display = 'none'
-//         })
-//     })
-// })
