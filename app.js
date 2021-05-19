@@ -27,12 +27,27 @@ function addSemiTeams(quarter, semi, semiArray, topTeam, bottomTeam) {
                 if(target.classList.contains(topTeam)) {
                     target.classList.add('selected-row')
                     target.nextElementSibling.classList.remove('selected-row')
+
+                    // ADD CIRCLE CLASS
+                    target.firstElementChild.nextElementSibling.innerHTML = `<i class="fas fa-check"></i>`
+                    target.firstElementChild.nextElementSibling.classList.add('checked-circle')
+                    target.nextElementSibling.firstElementChild.nextElementSibling.innerHTML = ``
+                    target.nextElementSibling.firstElementChild.nextElementSibling.classList.remove('checked-circle')
+
                 } else if(target.classList.contains(bottomTeam)) {
                     target.classList.add('selected-row')
                     target.previousElementSibling.classList.remove('selected-row')
+
+                    // ADD CIRCLE CLASS
+                    target.firstElementChild.nextElementSibling.innerHTML = `<i class="fas fa-check"></i>`
+                    target.firstElementChild.nextElementSibling.classList.add('checked-circle')
+                    target.previousElementSibling.firstElementChild.nextElementSibling.innerHTML = ``
+                    target.previousElementSibling.firstElementChild.nextElementSibling.classList.remove('checked-circle')
                 }
                 semiArray.push(target)
                 semi.innerHTML = target.innerHTML;
+                semi.firstElementChild.nextElementSibling.innerHTML = ''
+                semi.firstElementChild.nextElementSibling.classList.remove('checked-circle')
                 semi.classList.remove('empty-row')
             }
         }
