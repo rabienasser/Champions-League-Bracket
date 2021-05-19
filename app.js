@@ -16,6 +16,24 @@ const final_1 = [];
 const final_2 = [];
 
 
+function quarterFinalStageCheck() {
+    if(!s1.classList.contains('empty-row') && !s2.classList.contains('empty-row') && !s3.classList.contains('empty-row') && !s4.classList.contains('empty-row')) {
+        document.querySelector('.q-stage-check').style.display = 'flex'
+    }
+}
+
+function semiFinalStageCheck() {
+    if(!f1.classList.contains('empty-row') && !f2.classList.contains('empty-row')) {
+        document.querySelector('.s-stage-check').style.display = 'flex'
+    }
+}
+
+function finalStageCheck() {
+    if(f1.classList.contains('selected-row') || f2.classList.contains('selected-row')) {
+        document.querySelector('.f-stage-check').style.display = 'flex'
+    }
+}
+
 
 // ADD SEMI-FINAL TEAMS
 function addSemiTeams(quarter, semi, semiArray, topTeam, bottomTeam) {
@@ -49,6 +67,7 @@ function addSemiTeams(quarter, semi, semiArray, topTeam, bottomTeam) {
                 semi.firstElementChild.nextElementSibling.innerHTML = ''
                 semi.firstElementChild.nextElementSibling.classList.remove('checked-circle')
                 semi.classList.remove('empty-row')
+                quarterFinalStageCheck()
             }
         }
 
@@ -67,13 +86,29 @@ function addFinalTeams(semi, final, finalArray, topTeam, bottomTeam) {
                 if(target.classList.contains(topTeam)) {
                     target.classList.add('selected-row')
                     target.nextElementSibling.classList.remove('selected-row')
+
+                    // ADD CIRCLE CLASS
+                    target.firstElementChild.nextElementSibling.innerHTML = `<i class="fas fa-check"></i>`
+                    target.firstElementChild.nextElementSibling.classList.add('checked-circle')
+                    target.nextElementSibling.firstElementChild.nextElementSibling.innerHTML = ``
+                    target.nextElementSibling.firstElementChild.nextElementSibling.classList.remove('checked-circle')
+
                 } else if(target.classList.contains(bottomTeam)) {
                     target.classList.add('selected-row')
                     target.previousElementSibling.classList.remove('selected-row')
+
+                    // ADD CIRCLE CLASS
+                    target.firstElementChild.nextElementSibling.innerHTML = `<i class="fas fa-check"></i>`
+                    target.firstElementChild.nextElementSibling.classList.add('checked-circle')
+                    target.previousElementSibling.firstElementChild.nextElementSibling.innerHTML = ``
+                    target.previousElementSibling.firstElementChild.nextElementSibling.classList.remove('checked-circle')
                 }
                 finalArray.push(target)
                 final.innerHTML = target.innerHTML;
+                final.firstElementChild.nextElementSibling.innerHTML = ''
+                final.firstElementChild.nextElementSibling.classList.remove('checked-circle')
                 final.classList.remove('empty-row')
+                semiFinalStageCheck();
             } 
 
             resetFinalTeams('q-1', final)
@@ -186,7 +221,7 @@ function createPopUp() {
                         <h3>You picked<br>
                         <span class="selected-team">${team_1.name}</span> to beat ${team_2.name}</h3>
                         <div class="match">
-                            <img src="${team_1.logo}" class="team-logo fixture-logo selected-team-logo">
+                            <img src="${team_1.logo}" class="team-logo fixture-logo">
                             <p>VS</p>
                             <img src="${team_2.logo}" class="team-logo fixture-logo">
                         </div>

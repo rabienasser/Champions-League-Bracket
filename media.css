@@ -72,4 +72,8 @@
     .advertisement {
         display: none;
     }
+
+    .continue-btn {
+        width: 80%;
+    }
 }
