@@ -562,7 +562,12 @@ footer {
     height: 122px;
     position: fixed;
     bottom: 0;
-    display: none;
+    transform: translateY(200px);
+    transition: all 0.7s ease-out;
+}
+
+.bracket-complete.show {
+    transform: translateY(0);
 }
 
 .bracket-complete-container {

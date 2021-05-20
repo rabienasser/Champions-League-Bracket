@@ -1,6 +1,7 @@
 const popUp = document.querySelector('.pop-up-container')
 const popUpContainer = document.querySelector('.pop-up-container')
 const bracketContent = document.querySelector('.bracket-content')
+const winnerPopUp = document.querySelector('.bracket-complete')
 const s1 = document.querySelector('.s-1')
 const s2 = document.querySelector('.s-2')
 const s3 = document.querySelector('.s-3')
@@ -93,7 +94,7 @@ function selectWinner(final, topTeam, bottomTeam) {
             if(target.classList.contains(final) && !target.classList.contains('empty-row')) {
                 designSelectedTeams(undefined, undefined, topTeam, bottomTeam, target)
                 finalStageCheck();
-                winnerPopUp();
+                createWinnerPopUp();
             } 
         }
     });
@@ -206,36 +207,22 @@ function finalCall() {
 finalCall();
 
 
-const teste = document.querySelector('.bracket-complete')
+
 // CREATE POPUP WHEN TOURNAMENT WINNER IS SELECTED
-function winnerPopUp() {
+function createWinnerPopUp() {
     const popUpBtn = document.querySelector('.continue-btn')
 
-    teste.style.display = 'flex'
+    winnerPopUp.classList.add('show')
 
     popUpBtn.addEventListener('click', () => {
         console.log('hdbhdfb')
     })
 }
 
-// function wheeze() {
-//     bracketContent.addEventListener('click', (e) => {
-//         const target = e.target
 
-//         if(target !== e.currentTarget) {
-//             if(target === s1 || target === s2 || target === s3 || target === s4) {
-//                 if(!f1.classList.contains('empty-row') && !f2.classList.contains('empty-row')) {
-//                     const firstFinalist = f1.firstElementChild.nextElementSibling.innerHTML
-//                     const secondFinalist = f2.firstElementChild.nextElementSibling.innerHTML
-//                     if((firstFinalist === '' && secondFinalist === '') || f1.classList.contains('empty-row') && f2.classList.contains('empty-row')) {
-//                         teste.style.display = 'none'
-//                     }
-//                 }
-//             } 
-//         }
-//     })
-// }
-function wheeze() {
+
+// REMOVE POPUP WHEN NEW TEAMS ARE SELECTED
+function removeWinnerPopUp() {
     bracketContent.addEventListener('click', (e) => {
         const target = e.target
 
@@ -243,15 +230,15 @@ function wheeze() {
             const firstFinalist = f1.firstElementChild.nextElementSibling.innerHTML
             const secondFinalist = f2.firstElementChild.nextElementSibling.innerHTML
             if(firstFinalist === '' && secondFinalist === '') {
-                teste.style.display = 'none'
+                winnerPopUp.classList.remove('show')
             }
             if(target.classList.contains('quarter')) {
-                teste.style.display = 'none'
+                winnerPopUp.classList.remove('show')
             }
         }
     })
 }
-wheeze();
+removeWinnerPopUp();
 
 
 // CREATE POPUP SCREEN OF MATCH PREVIEW
