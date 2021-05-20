@@ -16,6 +16,119 @@ const final_1 = [];
 const final_2 = [];
 
 
+
+// ADD SEMI-FINAL TEAMS
+function addSemiTeams(quarter, semi, semiArray, topTeam, bottomTeam) {
+    bracketContent.addEventListener('click', (e) => {
+        const target = e.target
+    
+        if(target !== e.currentTarget) {
+            if(target.classList.contains(quarter)) {
+                // if(target.classList.contains(topTeam)) {
+                //     target.classList.add('selected-row')
+                //     target.nextElementSibling.classList.remove('selected-row')
+
+                //     // ADD CIRCLE CLASS
+                //     target.firstElementChild.nextElementSibling.innerHTML = `<i class="fas fa-check"></i>`
+                //     target.firstElementChild.nextElementSibling.classList.add('checked-circle')
+                //     target.nextElementSibling.firstElementChild.nextElementSibling.innerHTML = ``
+                //     target.nextElementSibling.firstElementChild.nextElementSibling.classList.remove('checked-circle')
+
+                // } else if(target.classList.contains(bottomTeam)) {
+                //     target.classList.add('selected-row')
+                //     target.previousElementSibling.classList.remove('selected-row')
+
+                //     // ADD CIRCLE CLASS
+                //     target.firstElementChild.nextElementSibling.innerHTML = `<i class="fas fa-check"></i>`
+                //     target.firstElementChild.nextElementSibling.classList.add('checked-circle')
+                //     target.previousElementSibling.firstElementChild.nextElementSibling.innerHTML = ``
+                //     target.previousElementSibling.firstElementChild.nextElementSibling.classList.remove('checked-circle')
+                // }
+                designSelectedTeams(quarter, semi, topTeam, bottomTeam, target)
+                semiArray.push(target)
+                semi.innerHTML = target.innerHTML;
+                semi.firstElementChild.nextElementSibling.innerHTML = ''
+                semi.firstElementChild.nextElementSibling.classList.remove('checked-circle')
+                semi.classList.remove('empty-row')
+                quarterFinalStageCheck()
+            }
+        }
+    });
+}
+
+
+
+// ADD FINAL TEAMS
+function addFinalTeams(semi, final, finalArray, topTeam, bottomTeam) {
+    bracketContent.addEventListener('click', (e) => {
+        const target = e.target
+    
+        if(target !== e.currentTarget) {
+            if(target.classList.contains(semi) && !target.classList.contains('empty-row')) {
+                designSelectedTeams(semi, final, topTeam, bottomTeam, target)
+                finalArray.push(target)
+                final.innerHTML = target.innerHTML;
+                final.firstElementChild.nextElementSibling.innerHTML = ''
+                final.firstElementChild.nextElementSibling.classList.remove('checked-circle')
+                final.classList.remove('empty-row')
+                semiFinalStageCheck();
+            } 
+
+            resetFinalTeams('q-1', final)
+            resetFinalTeams('q-2', final)
+            resetFinalTeams('q-3', final)
+            resetFinalTeams('q-4', final)
+        }
+    });
+}
+
+
+
+// CHOOSE TOURNAMENT WINNER
+function selectWinner(final, topTeam, bottomTeam) {
+    bracketContent.addEventListener('click', (e) => {
+        const target = e.target
+    
+        if(target !== e.currentTarget) {
+            if(target.classList.contains(final) && !target.classList.contains('empty-row')) {
+                designSelectedTeams(undefined, undefined, topTeam, bottomTeam, target)
+                finalStageCheck();
+                winnerPopUp();
+            } 
+        }
+    });
+}
+selectWinner('final', 'f-1', 'f-2')
+
+
+
+// ADD EFFECTS ON SELECTED TEAMS
+function designSelectedTeams(firstStage, secondStage, topTeam, bottomTeam, target) {
+    if(target.classList.contains(topTeam)) {
+        target.classList.add('selected-row')
+        target.nextElementSibling.classList.remove('selected-row')
+
+        // ADD CIRCLE CLASS
+        target.firstElementChild.nextElementSibling.innerHTML = `<i class="fas fa-check"></i>`
+        target.firstElementChild.nextElementSibling.classList.add('checked-circle')
+        target.nextElementSibling.firstElementChild.nextElementSibling.innerHTML = ``
+        target.nextElementSibling.firstElementChild.nextElementSibling.classList.remove('checked-circle')
+
+    } else if(target.classList.contains(bottomTeam)) {
+        target.classList.add('selected-row')
+        target.previousElementSibling.classList.remove('selected-row')
+
+        // ADD CIRCLE CLASS
+        target.firstElementChild.nextElementSibling.innerHTML = `<i class="fas fa-check"></i>`
+        target.firstElementChild.nextElementSibling.classList.add('checked-circle')
+        target.previousElementSibling.firstElementChild.nextElementSibling.innerHTML = ``
+        target.previousElementSibling.firstElementChild.nextElementSibling.classList.remove('checked-circle')
+    }
+}
+
+
+
+// ADD CHECKMARKS WHEN TOURNAMENT STAGES ARE COMPLETE
 function quarterFinalStageCheck() {
     if(!s1.classList.contains('empty-row') && !s2.classList.contains('empty-row') && !s3.classList.contains('empty-row') && !s4.classList.contains('empty-row')) {
         document.querySelector('.q-stage-check').style.display = 'flex'
@@ -35,93 +148,6 @@ function finalStageCheck() {
 }
 
 
-// ADD SEMI-FINAL TEAMS
-function addSemiTeams(quarter, semi, semiArray, topTeam, bottomTeam) {
-    bracketContent.addEventListener('click', (e) => {
-        const target = e.target
-    
-        if(target !== e.currentTarget) {
-            if(target.classList.contains(quarter)) {
-                if(target.classList.contains(topTeam)) {
-                    target.classList.add('selected-row')
-                    target.nextElementSibling.classList.remove('selected-row')
-
-                    // ADD CIRCLE CLASS
-                    target.firstElementChild.nextElementSibling.innerHTML = `<i class="fas fa-check"></i>`
-                    target.firstElementChild.nextElementSibling.classList.add('checked-circle')
-                    target.nextElementSibling.firstElementChild.nextElementSibling.innerHTML = ``
-                    target.nextElementSibling.firstElementChild.nextElementSibling.classList.remove('checked-circle')
-
-                } else if(target.classList.contains(bottomTeam)) {
-                    target.classList.add('selected-row')
-                    target.previousElementSibling.classList.remove('selected-row')
-
-                    // ADD CIRCLE CLASS
-                    target.firstElementChild.nextElementSibling.innerHTML = `<i class="fas fa-check"></i>`
-                    target.firstElementChild.nextElementSibling.classList.add('checked-circle')
-                    target.previousElementSibling.firstElementChild.nextElementSibling.innerHTML = ``
-                    target.previousElementSibling.firstElementChild.nextElementSibling.classList.remove('checked-circle')
-                }
-                semiArray.push(target)
-                semi.innerHTML = target.innerHTML;
-                semi.firstElementChild.nextElementSibling.innerHTML = ''
-                semi.firstElementChild.nextElementSibling.classList.remove('checked-circle')
-                semi.classList.remove('empty-row')
-                quarterFinalStageCheck()
-            }
-        }
-
-        e.stopPropagation();
-    });
-
-}
-
-// ADD FINAL TEAMS
-function addFinalTeams(semi, final, finalArray, topTeam, bottomTeam) {
-    bracketContent.addEventListener('click', (e) => {
-        const target = e.target
-    
-        if(target !== e.currentTarget) {
-            if(target.classList.contains(semi) && !target.classList.contains('empty-row')) {
-                if(target.classList.contains(topTeam)) {
-                    target.classList.add('selected-row')
-                    target.nextElementSibling.classList.remove('selected-row')
-
-                    // ADD CIRCLE CLASS
-                    target.firstElementChild.nextElementSibling.innerHTML = `<i class="fas fa-check"></i>`
-                    target.firstElementChild.nextElementSibling.classList.add('checked-circle')
-                    target.nextElementSibling.firstElementChild.nextElementSibling.innerHTML = ``
-                    target.nextElementSibling.firstElementChild.nextElementSibling.classList.remove('checked-circle')
-
-                } else if(target.classList.contains(bottomTeam)) {
-                    target.classList.add('selected-row')
-                    target.previousElementSibling.classList.remove('selected-row')
-
-                    // ADD CIRCLE CLASS
-                    target.firstElementChild.nextElementSibling.innerHTML = `<i class="fas fa-check"></i>`
-                    target.firstElementChild.nextElementSibling.classList.add('checked-circle')
-                    target.previousElementSibling.firstElementChild.nextElementSibling.innerHTML = ``
-                    target.previousElementSibling.firstElementChild.nextElementSibling.classList.remove('checked-circle')
-                }
-                finalArray.push(target)
-                final.innerHTML = target.innerHTML;
-                final.firstElementChild.nextElementSibling.innerHTML = ''
-                final.firstElementChild.nextElementSibling.classList.remove('checked-circle')
-                final.classList.remove('empty-row')
-                semiFinalStageCheck();
-            } 
-
-            resetFinalTeams('q-1', final)
-            resetFinalTeams('q-2', final)
-            resetFinalTeams('q-3', final)
-            resetFinalTeams('q-4', final)
-        }
-
-
-        e.stopPropagation();
-    });
-}
-
 
 // RESET FINAL TEAMS WHEN SEMI-FINAL TEAM IS CHANGED
 function resetFinalTeams(gameBox, final) {
@@ -138,6 +164,7 @@ function resetFinalTeams(gameBox, final) {
         }
     })
 }
+
 
 
 // ADD SEMI-FINAL AND FINAL TEAMS TO DOM
@@ -161,6 +188,7 @@ function addFinalTwo() {
 }
 
 
+
 // CALL SEMI FINAL AND FINAL FUNCTIONS
 function semiCall() {
     addSemiOne();
@@ -176,6 +204,54 @@ function finalCall() {
     addFinalTwo();
 }
 finalCall();
+
+
+const teste = document.querySelector('.bracket-complete')
+// CREATE POPUP WHEN TOURNAMENT WINNER IS SELECTED
+function winnerPopUp() {
+    const popUpBtn = document.querySelector('.continue-btn')
+
+    teste.style.display = 'flex'
+
+    popUpBtn.addEventListener('click', () => {
+        console.log('hdbhdfb')
+    })
+}
+
+// function wheeze() {
+//     bracketContent.addEventListener('click', (e) => {
+//         const target = e.target
+
+//         if(target !== e.currentTarget) {
+//             if(target === s1 || target === s2 || target === s3 || target === s4) {
+//                 if(!f1.classList.contains('empty-row') && !f2.classList.contains('empty-row')) {
+//                     const firstFinalist = f1.firstElementChild.nextElementSibling.innerHTML
+//                     const secondFinalist = f2.firstElementChild.nextElementSibling.innerHTML
+//                     if((firstFinalist === '' && secondFinalist === '') || f1.classList.contains('empty-row') && f2.classList.contains('empty-row')) {
+//                         teste.style.display = 'none'
+//                     }
+//                 }
+//             } 
+//         }
+//     })
+// }
+function wheeze() {
+    bracketContent.addEventListener('click', (e) => {
+        const target = e.target
+
+        if(!f1.classList.contains('empty-row') && !f2.classList.contains('empty-row')) {
+            const firstFinalist = f1.firstElementChild.nextElementSibling.innerHTML
+            const secondFinalist = f2.firstElementChild.nextElementSibling.innerHTML
+            if(firstFinalist === '' && secondFinalist === '') {
+                teste.style.display = 'none'
+            }
+            if(target.classList.contains('quarter')) {
+                teste.style.display = 'none'
+            }
+        }
+    })
+}
+wheeze();
 
 
 // CREATE POPUP SCREEN OF MATCH PREVIEW
@@ -267,11 +343,12 @@ function createPopUp() {
                     });
             }
         }
-    
         e.stopPropagation();
     });
     }
     createPopUp();
+
+
 
     // POP-UP CLOSE BUTTON USING EVENT DELEGATION
     popUp.addEventListener('click', (e) => {
