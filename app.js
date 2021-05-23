@@ -215,7 +215,7 @@ function createWinnerPopUp() {
     winnerPopUp.classList.add('show')
 
     popUpBtn.addEventListener('click', () => {
-        console.log('hdbhdfb')
+        UEFALogIn()
     })
 }
 
@@ -239,6 +239,14 @@ function removeWinnerPopUp() {
     })
 }
 removeWinnerPopUp();
+
+
+
+// GENERATE UEFA LOG-IN SCREEN
+function UEFALogIn() {
+    console.log('wheeze')
+}
+
 
 
 // CREATE POPUP SCREEN OF MATCH PREVIEW
