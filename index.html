@@ -355,13 +355,18 @@
                             <p>Sign in with Apple</p>
                         </button>
                         <label  class="comment">or</label>
-                        <form >
+                        <form class="log-in-form">
                             <button class="uefa-btn invalid-msg"><i class="fas fa-exclamation-circle"></i>Invalid login or password</button>
                             <img src="https://i.gifer.com/ZKZg.gif" class="loader">
                             <input type="email" name="email" placeholder="Email" class="sign-in-input">
                             <input type="password" name="password" placeholder="Password" class="sign-in-input">
                             <div class="password-flex">
-                                <label class="checkbox"><input type="checkbox">Keep me signed in</label>
+                                <!-- <label class="checkbox"><input type="checkbox">Keep me signed in</label> -->
+                                <div class="checkbox">
+                                    <input type="checkbox"
+                                           checked>
+                                    <label>Keep me signed in</label>
+                                  </div>
                                 <p class="forgot-password">I forgot my password</p>
                             </div>
                             <button class="uefa-btn submit-btn">Submit</button>

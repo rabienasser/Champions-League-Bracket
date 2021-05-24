@@ -72,14 +72,14 @@ function addFinalTeams(semi, final, finalArray, topTeam, bottomTeam) {
                 final.innerHTML = target.innerHTML;
                 final.firstElementChild.nextElementSibling.innerHTML = ''
                 final.firstElementChild.nextElementSibling.classList.remove('checked-circle')
-                final.classList.remove('empty-row')
+                final.classList.remove('empty-row', 'selected-row')
                 semiFinalStageCheck();
             } 
 
-            resetFinalTeams('q-1', final)
-            resetFinalTeams('q-2', final)
-            resetFinalTeams('q-3', final)
-            resetFinalTeams('q-4', final)
+            resetFinalTeams('q-1', final, s1, s2)
+            resetFinalTeams('q-2', final, s1, s2)
+            resetFinalTeams('q-3', final, s3, s4)
+            resetFinalTeams('q-4', final, s3, s4)
         }
     });
 }
@@ -152,7 +152,7 @@ function finalStageCheck() {
 
 
 // RESET FINAL TEAMS WHEN SEMI-FINAL TEAM IS CHANGED
-function resetFinalTeams(gameBox, final) {
+function resetFinalTeams(gameBox, final, semi1, semi2) {
     bracketContent.addEventListener('click', (e) => {
         const target = e.target
 
@@ -162,6 +162,12 @@ function resetFinalTeams(gameBox, final) {
                 <i class="fas fa-shield-alt team-logo shield"></i>
                 `;
                 final.classList.add('empty-row')
+                semi1.classList.remove('selected-row')
+                semi2.classList.remove('selected-row')
+                semi1.firstElementChild.nextElementSibling.classList.remove('checked-circle')
+                semi1.firstElementChild.nextElementSibling.innerHTML = ``
+                semi2.firstElementChild.nextElementSibling.classList.remove('checked-circle')
+                semi2.firstElementChild.nextElementSibling.innerHTML = ``
             }
         }
     })
@@ -265,7 +271,9 @@ function submitLogIn() {
     const submitBtn = document.querySelector('.submit-btn')
     const invalidMsg = document.querySelector('.invalid-msg')
     const loader = document.querySelector('.loader')
+    const form = document.querySelector('.log-in-form')
 
+    // LOAD & PREVENT DEFAULT ON SUBMIT BUTTON
     submitBtn.addEventListener('click', (e) => {
         loader.style.display = 'block'
         invalidMsg.style.display = 'none'
@@ -276,6 +284,23 @@ function submitLogIn() {
         }, 1000)
 
         e.preventDefault()
+    })
+
+    // LOAD & PREVENT DEFAULT ON ENTER KEY
+    form.addEventListener('keypress', (e) => {
+        if(e.keyCode == 13 || e.which == 13) {
+
+            loader.style.display = 'block'
+            invalidMsg.style.display = 'none'
+    
+            setTimeout(function() {
+                invalidMsg.style.display = 'flex'
+                loader.style.display = 'none'
+            }, 1000)
+            
+            e.preventDefault()
+        }
+
     })
 }
 
