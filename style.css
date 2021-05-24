@@ -26,7 +26,7 @@ body {
 } */
 
 body * {
-    z-index: 1;
+    z-index: 2;
 }
 
 
@@ -474,7 +474,6 @@ footer {
 
 /* PopUp */
 .pop-up-overlay {
-    /* display: none; */
     position: fixed;
     top: 0;
     left: 0;
@@ -598,6 +597,20 @@ footer {
 
 
 /* UEFA LOG-IN SCREEN */
+.log-in-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    z-index: 1;
+}
+
 .uefa {
     background: grey;
     height: 100%;
@@ -653,20 +666,18 @@ footer {
     color: var(--color);
 }
 
-.uefa .right-div {
-    background: white;
-    color: black;
-}
-
 .left-div,
 .right-div {
     padding: 30px 50px;
 }
 
 .uefa .right-div {
+    background: white;
+    color: black;
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
 }
 
 .uefa .right-div-container {
@@ -781,4 +792,34 @@ footer {
 .uefa .right-div .forgot-password {
     color: rgb(0, 94, 180);
     cursor: pointer;
+}
+
+.invalid-msg {
+    /* display: none; */
+    height: 35px;
+    border: 1px solid red;
+    font-size: 14px;
+    color: rgba(51, 51, 51, 0.6);
+    background-color: #FFF3F3;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    display: none;
+}
+
+.invalid-msg i {
+    margin-right: 5px;
+    color: red;
+    font-size: 18px;
+}
+
+.loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 50px;
+    width: 50px;
+    z-index: 3;
+    display: none;
 }

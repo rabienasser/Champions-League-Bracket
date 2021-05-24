@@ -2,6 +2,7 @@ const popUp = document.querySelector('.pop-up-container')
 const popUpContainer = document.querySelector('.pop-up-container')
 const bracketContent = document.querySelector('.bracket-content')
 const winnerPopUp = document.querySelector('.bracket-complete')
+const loginBtn = document.querySelector('.log-in-btn')
 const s1 = document.querySelector('.s-1')
 const s2 = document.querySelector('.s-2')
 const s3 = document.querySelector('.s-3')
@@ -244,8 +245,82 @@ removeWinnerPopUp();
 
 // GENERATE UEFA LOG-IN SCREEN
 function UEFALogIn() {
-    console.log('wheeze')
+    const overlay = document.querySelector('.log-in-overlay')
+    const closeBtn = document.querySelector('.close-log-in')
+    overlay.style.opacity = 1
+    overlay.style.zIndex = 3
+
+    closeBtn.addEventListener('click', () => {
+        overlay.style.opacity = 0
+        overlay.style.zIndex = 1
+    })
+
+    submitLogIn();
 }
+
+
+
+// SUBMIT EMAIL AND PASSWORD ON LOGIN
+function submitLogIn() {
+    const submitBtn = document.querySelector('.submit-btn')
+    const invalidMsg = document.querySelector('.invalid-msg')
+    const loader = document.querySelector('.loader')
+
+    submitBtn.addEventListener('click', (e) => {
+        loader.style.display = 'block'
+        invalidMsg.style.display = 'none'
+
+        setTimeout(function() {
+            invalidMsg.style.display = 'flex'
+            loader.style.display = 'none'
+        }, 1000)
+
+        e.preventDefault()
+    })
+}
+
+
+
+// // CREATE EMAIL
+// function createEmail() {
+//     re = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/
+//     const error = document.querySelector('.email-error')
+
+//     if(!re.test(email.value)) {
+//         email.classList.add('invalid')
+//         error.style.display = 'flex'
+//     } else {
+//         email.classList.add('valid')
+//         error.style.display = 'none'
+//     }
+// }
+
+
+
+// // CREATE PASSWORD
+// function createPassword() {
+//     re = /^(?=.*\d)(?=.*\W)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z\W]{8,15}$/;
+//     const error = document.querySelector('.password-error')
+
+//     if(password.value.length < 8) {
+//        password.classList.add('invalid')
+//        error.textContent = 'password must be at least 8 characters'
+//        error.style.display = 'flex'
+//     } else if(password.value.length > 15) {
+//         password.classList.add('invalid')
+//         error.textContent = 'Password must not exceed 15 characters'
+//         error.style.display = 'flex'
+//     } else if(password.value.length >= 8 && password.value.length <= 15){
+//         if(!re.test(password.value)) {
+//             password.classList.add('invalid')
+//             error.textContent = 'Password must contain at least 1 uppercase letter, 1 number, and 1 special character'
+//             error.style.display = 'flex'
+//         } else {
+//             password.classList.add('valid')
+//             error.style.display = 'none'
+//         }
+//     }
+// }
 
 
 
@@ -351,3 +426,8 @@ function createPopUp() {
             popUp.style.display = 'none'
         }
     })
+
+
+
+    // PULL LOGIN SCREEN WHEN LOGIN BTN IS PRESSED
+    loginBtn.addEventListener('click', UEFALogIn)
