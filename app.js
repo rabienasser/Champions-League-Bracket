@@ -251,14 +251,24 @@ removeWinnerPopUp();
 
 // GENERATE UEFA LOG-IN SCREEN
 function UEFALogIn() {
-    const overlay = document.querySelector('.log-in-overlay')
+    const loginOverlay = document.querySelector('.log-in-overlay')
+    const createAcctOverlay = document.querySelector('.create-account-overlay')
     const closeBtn = document.querySelector('.close-log-in')
-    overlay.style.opacity = 1
-    overlay.style.zIndex = 3
+    const createAcctBtn = document.querySelector('.create-account-btn')
+
+    loginOverlay.style.opacity = 1
+    loginOverlay.style.zIndex = 3
 
     closeBtn.addEventListener('click', () => {
-        overlay.style.opacity = 0
-        overlay.style.zIndex = 1
+        loginOverlay.style.opacity = 0
+        loginOverlay.style.zIndex = 1
+    })
+
+    createAcctBtn.addEventListener('click', () => {
+        loginOverlay.style.opacity = 0
+        loginOverlay.style.zIndex = 1
+        createAcctOverlay.style.opacity = 1
+        createAcctOverlay.style.zIndex = 3
     })
 
     submitLogIn();

@@ -1,0 +1,333 @@
+/* UEFA LOG-IN SCREEN */
+.log-in-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    z-index: 1;
+}
+
+.uefa {
+    background: grey;
+    height: 100%;
+    width: 60%;
+    position: relative;
+    overflow-x: auto;
+}
+
+.uefa-container {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.close-log-in {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 25px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: rgb(48, 49, 110);
+}
+
+.uefa .left-div {
+    background: url('./images/Champions\ league\ background2.jpg') no-repeat left center/cover;
+}
+
+.left-div::after {
+    content: '';
+    top: 0;
+    left: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.3);
+}
+
+.uefa .left-div h2 {
+    margin-bottom: 50px;
+}
+
+.uefa .left-div .member {
+    display: flex;
+    margin-bottom: 70px;
+}
+
+.member i {
+    font-size: 30px;
+    margin-right: 20px;
+    color: var(--color);
+}
+
+.left-div,
+.right-div {
+    padding: 30px 50px;
+}
+
+.uefa .right-div {
+    background: white;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.uefa .right-div-container {
+    width: 100%;
+}
+
+.uefa .right-div h2 {
+    margin-bottom: 70px;
+}
+
+.uefa-btn {
+    padding: 0 20px;
+    font-size: 14px;
+    height: 50px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+}
+
+.uefa-btn:hover {
+    opacity: 0.9;
+}
+
+.social-btn {
+    display: flex;
+    margin-bottom: 8px;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-icon {
+    width: 19px;
+    height: 19px;
+    margin-right: 8px;
+}
+
+.facebook-btn {
+    background: rgb(59, 89, 152);
+    color: white;
+}
+
+.google-btn {
+    background: white;
+    color: black;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 24%), 0 0 1px 0 rgb(0 0 0 / 12%);
+}
+
+.apple-btn {
+    background: black;
+    color: white;
+}
+
+.submit-btn {
+    background: rgb(0, 94, 180);
+    color: white;
+}
+
+.create-account-btn {
+    background: white;
+    color: rgb(0, 94, 180);
+    border: 1px solid rgb(0, 94, 180);
+    margin-top: 20px;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+.create-account-btn:hover {
+    background-color: rgb(0, 94, 180);
+    color: white;
+}
+
+.comment {
+    color: rgba(51, 51, 51, 0.6);
+    display: block;
+    text-align: center;
+}
+
+.uefa .right-div form {
+    display: flex;
+    flex-direction: column;
+    margin: 30px 0px 20px 0px;
+}
+
+.sign-in-input {
+    padding-bottom: 12px;
+    font-size: 18px;
+    width: 100%;
+    margin-top: 12px;
+    margin-bottom: 8px;
+    border: none;
+    border-bottom: 2px solid rgba(175, 182, 188, 0.4);
+}
+
+.sign-in-input:focus {
+    outline: none;
+    border-bottom-color: rgb(0, 94, 180);
+}
+
+.uefa .right-div .password-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    font-size: 16px;
+}
+
+.uefa .right-div .checkbox {
+    display: flex;
+    text-align: center;
+}
+
+.uefa .right-div .checkbox label {
+    color: rgba(51, 51, 51, 0.6);
+}
+
+.uefa .right-div .forgot-password {
+    color: rgb(0, 94, 180);
+    cursor: pointer;
+}
+
+.invalid-msg {
+    /* display: none; */
+    height: 35px;
+    border: 1px solid red;
+    font-size: 14px;
+    color: rgba(51, 51, 51, 0.6);
+    background-color: #FFF3F3;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    display: none;
+}
+
+.invalid-msg i {
+    margin-right: 5px;
+    color: red;
+    font-size: 18px;
+}
+
+.loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 50px;
+    width: 50px;
+    z-index: 3;
+    display: none;
+}
+
+
+
+/* CREATE ACCOUNT FORM */
+.create-account-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    z-index: 1;
+}
+
+.create-account {
+    background: white;
+    height: 98%;
+    width: 30%;
+    position: relative;
+    overflow-x: auto;
+    color: rgba(51, 51, 51, 0.6);
+}
+
+.create-account-container {
+    height: fit-content;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.create-new-account-header {
+    background-color: #1371B9;
+    width: 100%;
+    height: 8%;
+}
+
+.create-new-account-header h2 {
+    color: white;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.sign-up-now {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.input-icons i {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: rgba(51, 51, 51, 0.6);
+    font-size: 16px;
+    cursor: pointer;
+}
+  
+.input-icons {
+    width: 100%;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.dob {
+    color: rgba(51, 51, 51, 0.6);
+}
+
+.question-hover {
+    position: absolute;
+    bottom: 30px;
+    right: 0;
+    background: white;
+    color: black;
+    height: 50px;
+    width: 200px;
+    font-size: 13px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 24%), 0 0 1px 0 rgb(0 0 0 / 12%);
+    display: none;
+}
+
+.sign-up-agreements {
+    margin: 20px 0;
+}
+
+.agr {
+    padding: 8px 0;
+}
+
+.terms {
+    color: rgb(0, 94, 180);
+}
