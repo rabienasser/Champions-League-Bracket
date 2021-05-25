@@ -334,8 +334,19 @@
 
 .terms {
     color: rgb(0, 94, 180);
+    cursor: pointer;
 }
 
 .create-account-btn {
     margin: 20px 0 30px;
+}
+
+.q-hover-3 {
+    z-index: 3;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    display: none;
 }
