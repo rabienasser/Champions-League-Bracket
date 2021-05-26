@@ -124,17 +124,37 @@ function createPassword() {
     if(password.value.length < 8) {
        error.textContent = 'password must be at least 8 characters'
        error.style.display = 'flex'
+       success.style.display = 'none'
     } else if(password.value.length > 15) {
         error.textContent = 'Password must not exceed 15 characters'
         error.style.display = 'flex'
+        success.style.display = 'none'
     } else if(password.value.length >= 8 && password.value.length <= 15){
         if(!re.test(password.value)) {
             error.textContent = 'Password must contain at least 1 uppercase letter, 1 number, and 1 special character'
             error.style.display = 'flex'
-        } else {
+            success.style.display = 'none'
+        } else if(re.test(password.value)){
             error.style.display = 'none'
             success.style.display = 'flex'
         }
+    }
+}
+
+
+// CREATE FIRST NAME
+function createFirstName() {
+    re = /^[a-zA-Z]+$/;
+    const firstName = document.querySelector('.create-acct-first')
+    const error = document.querySelector('.first-name-error')
+    const success = document.querySelector('.input-check-3')
+
+    if(!re.test(firstName.value)) {
+        error.style.display = 'flex'
+        success.style.display = 'none'
+    } else if(re.test(firstName.value)){
+        error.style.display = 'none'
+        success.style.display = 'flex'
     }
 }
 
@@ -149,5 +169,6 @@ alreadyHaveAcctBtn.addEventListener('click', UEFALogIn)
 createAcctForm.addEventListener('submit', (e) => {
     createEmail();
     createPassword();
+    createFirstName();
     e.preventDefault();
 })
