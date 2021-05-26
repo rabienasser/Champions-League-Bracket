@@ -41,7 +41,7 @@ function submitLogIn() {
         invalidMsg.style.display = 'none'
 
         setTimeout(function() {
-            invalidMsg.style.display = 'flex'
+            invalidMsg.style.display = 'flex'   //BE SURE TO SET INTERVAL ON THIS ERROR MSG
             loader.style.display = 'none'
         }, 1000)
 
@@ -99,43 +99,44 @@ function iconHover() {
 // CREATE EMAIL
 function createEmail() {
     re = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/
-    const email = document.querySelector('.email2')
+    const email = document.querySelector('.create-acct-email')
     const error = document.querySelector('.email-error')
+    const success = document.querySelector('.input-check-1')
 
     if(!re.test(email.value)) {
         error.style.display = 'flex'
-    } else {
-        console.log('success')
+        success.style.display = 'none'
+    } else if(re.test(email.value)){
         error.style.display = 'none'
+        success.style.display = 'flex'
     }
 }
 
 
 
 // // CREATE PASSWORD
-// function createPassword() {
-//     re = /^(?=.*\d)(?=.*\W)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z\W]{8,15}$/;
-//     const error = document.querySelector('.password-error')
+function createPassword() {
+    re = /^(?=.*\d)(?=.*\W)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z\W]{8,15}$/;
+    const password = document.querySelector('.create-acct-password')
+    const error = document.querySelector('.password-error')
+    const success = document.querySelector('.input-check-2')
 
-//     if(password.value.length < 8) {
-//        password.classList.add('invalid')
-//        error.textContent = 'password must be at least 8 characters'
-//        error.style.display = 'flex'
-//     } else if(password.value.length > 15) {
-//         password.classList.add('invalid')
-//         error.textContent = 'Password must not exceed 15 characters'
-//         error.style.display = 'flex'
-//     } else if(password.value.length >= 8 && password.value.length <= 15){
-//         if(!re.test(password.value)) {
-//             password.classList.add('invalid')
-//             error.textContent = 'Password must contain at least 1 uppercase letter, 1 number, and 1 special character'
-//             error.style.display = 'flex'
-//         } else {
-//             password.classList.add('valid')
-//             error.style.display = 'none'
-//         }
-//     }
-// }
+    if(password.value.length < 8) {
+       error.textContent = 'password must be at least 8 characters'
+       error.style.display = 'flex'
+    } else if(password.value.length > 15) {
+        error.textContent = 'Password must not exceed 15 characters'
+        error.style.display = 'flex'
+    } else if(password.value.length >= 8 && password.value.length <= 15){
+        if(!re.test(password.value)) {
+            error.textContent = 'Password must contain at least 1 uppercase letter, 1 number, and 1 special character'
+            error.style.display = 'flex'
+        } else {
+            error.style.display = 'none'
+            success.style.display = 'flex'
+        }
+    }
+}
 
 
 
@@ -147,5 +148,6 @@ alreadyHaveAcctBtn.addEventListener('click', UEFALogIn)
 
 createAcctForm.addEventListener('submit', (e) => {
     createEmail();
+    createPassword();
     e.preventDefault();
 })
