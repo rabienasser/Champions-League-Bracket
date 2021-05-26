@@ -53,7 +53,7 @@
 
 
 @media (max-width: 768px) {
-.top-nav {
+/* .top-nav {
     display: flex;
     flex-direction: column;
 }
@@ -75,5 +75,5 @@
 
     .continue-btn {
         width: 80%;
-    }
+    } */
 }
