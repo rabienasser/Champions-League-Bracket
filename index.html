@@ -409,7 +409,7 @@
                 <label  class="comment">or</label>
 
                 <form class="create-acct-form">
-                    <img src="https://i.gifer.com/ZKZg.gif" class="loader">
+                    <img src="https://i.gifer.com/ZKZg.gif" class="loader loader2">
                     <div class="input-icons">
                         <i class="fas fa-question-circle q-hover-1"></i>
                         <i class="fas fa-check input-check input-check-1"></i>
@@ -435,14 +435,17 @@
 
                     <div class="input-icons">
                         <i class="fas fa-question-circle q-hover-3"></i>
-                        <input type="text" name="last-name" placeholder="Last name" class="sign-in-input">
+                        <i class="fas fa-check input-check input-check-4"></i>
+                        <input type="text" name="last-name" placeholder="Last name" class="sign-in-input create-acct-last">
+                        <p class="last-name-error error">Sorry, invalid characters are not allowed</p>
                         <div class="question-hover hover-msg-2">
                             <p>We use this to personalize your experience and potential ticket orders</p>
                         </div>
                     </div>
 
                     <div class="input-icons">
-                        <input type="date" name="DOB" class="sign-in-input dob">
+                        <input type="date" name="DOB" class="sign-in-input dob" min="1910-01-01" max="2005-01-01" required>
+                        <p class="dob-error error">This field is required</p>
                         <div class="question-hover hover-msg-3">
                             <p>We use this to personalize your experience and potential ticket orders</p>
                         </div>
@@ -457,10 +460,10 @@
                         <div class="checkbox agr">
                             <input type="checkbox"
                                 checked>
-                            <label>I accept UEFA's <span class="terms">Terms and Conditions</span></label>
+                            <label>I accept UEFA's <a href="https://www.uefa.com/termsconditions/" target="_blank" class="terms">Terms and Conditions</a></label>
                         </div>
                         <div class="agr">
-                            <small>For information on how UEFA uses your personal data see our <span class="terms">Privacy Policy</span></small>
+                            <a>For information on how UEFA uses your personal data see our <a href="https://www.uefa.com/privacypolicy/" class="terms" target="_blank">Privacy Policy</a>
                         </div>
                     </div>
 

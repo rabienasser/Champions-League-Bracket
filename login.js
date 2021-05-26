@@ -43,10 +43,9 @@ function submitLogIn() {
         setTimeout(function() {
             invalidMsg.style.display = 'flex'   //BE SURE TO SET INTERVAL ON THIS ERROR MSG
             loader.style.display = 'none'
+            email.value = ''
+            password.value = ''
         }, 1000)
-
-        email.value = ''
-        password.value = ''
 
         e.preventDefault()
     })
@@ -159,6 +158,22 @@ function createFirstName() {
 }
 
 
+// CREATE LAST NAME
+function createLastName() {
+    re = /^[a-zA-Z]+$/;
+    const lastName = document.querySelector('.create-acct-last')
+    const error = document.querySelector('.last-name-error')
+    const success = document.querySelector('.input-check-4')
+
+    if(!re.test(lastName.value)) {
+        error.style.display = 'flex'
+        success.style.display = 'none'
+    } else if(re.test(lastName.value)){
+        error.style.display = 'none'
+        success.style.display = 'flex'
+    }
+}
+
 
 // EVENT LISTENERS
 // PULL LOGIN SCREEN WHEN LOGIN BTN IS PRESSED
@@ -167,8 +182,16 @@ loginBtn.addEventListener('click', UEFALogIn)
 alreadyHaveAcctBtn.addEventListener('click', UEFALogIn)
 
 createAcctForm.addEventListener('submit', (e) => {
-    createEmail();
-    createPassword();
-    createFirstName();
+    const loader = document.querySelector('.loader2')
+    loader.style.display = 'block'
+
+    setTimeout(function() {
+        loader.style.display = 'none'
+        createEmail();
+        createPassword();
+        createFirstName();
+        createLastName();
+    }, 1000)
+
     e.preventDefault();
 })
