@@ -353,19 +353,26 @@ function createPopUp() {
     })
 
 
-function test() {
+function openAndCloseDropdownMenu() {
     const dropdownMenu = document.querySelector('.dropdown-menu')
     const menu = document.querySelector('.menu')
 
-    menu.addEventListener('click', () => {
-        dropdownMenu.style.display = 'block'
-    })
+        menu.addEventListener('click', () => {
+            dropdownMenu.style.display = 'block'
+        })
 
-    // document.addEventListener('click', (e) => {
-    //     if(dropdownMenu.style.display = 'block') {
-    //         dropdownMenu.style.display = 'none'
-    //     }
-    // })
+        window.addEventListener('mouseup', (e) => {
+            if(e.target !== dropdownMenu 
+                && e.target.parentNode != dropdownMenu
+                && e.target.parentNode.parentNode != dropdownMenu
+                && e.target.parentNode.parentNode.parentNode != dropdownMenu
+                && e.target.parentNode.parentNode.parentNode.parentNode != dropdownMenu
+                && e.target.parentNode.parentNode.parentNode.parentNode.parentNode != dropdownMenu
+                && e.target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode != dropdownMenu
+                ) {
+                dropdownMenu.style.display = 'none'
+                console.log(e.target.parentNode)
+            }
+        })
 }
-
-test();
+openAndCloseDropdownMenu();

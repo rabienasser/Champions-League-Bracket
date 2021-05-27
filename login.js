@@ -41,10 +41,15 @@ function submitLogIn() {
         invalidMsg.style.display = 'none'
 
         setTimeout(function() {
-            invalidMsg.style.display = 'flex'   //BE SURE TO SET INTERVAL ON THIS ERROR MSG
+            invalidMsg.style.display = 'flex'   
             loader.style.display = 'none'
             email.value = ''
             password.value = ''
+
+            // Let error msg fade after 5 seconds
+            setTimeout(function() {
+                invalidMsg.style.display = 'none'
+            }, 5000)
         }, 1000)
 
         e.preventDefault()
@@ -148,10 +153,10 @@ function createFirstName() {
     const error = document.querySelector('.first-name-error')
     const success = document.querySelector('.input-check-3')
 
-    if(!re.test(firstName.value)) {
+    if(!re.test(firstName.value.trim())) {
         error.style.display = 'flex'
         success.style.display = 'none'
-    } else if(re.test(firstName.value)){
+    } else if(re.test(firstName.value.trim())){
         error.style.display = 'none'
         success.style.display = 'flex'
     }
@@ -165,10 +170,10 @@ function createLastName() {
     const error = document.querySelector('.last-name-error')
     const success = document.querySelector('.input-check-4')
 
-    if(!re.test(lastName.value)) {
+    if(!re.test(lastName.value.trim())) {
         error.style.display = 'flex'
         success.style.display = 'none'
-    } else if(re.test(lastName.value)){
+    } else if(re.test(lastName.value.trim())){
         error.style.display = 'none'
         success.style.display = 'flex'
     }
