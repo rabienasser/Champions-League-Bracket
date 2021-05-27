@@ -23,32 +23,21 @@ const final_2 = [];
 function addSemiTeams(quarter, semi, semiArray, topTeam, bottomTeam) {
     bracketContent.addEventListener('click', (e) => {
         const target = e.target
+        const parent = target.parentNode.parentNode
     
         if(target !== e.currentTarget) {
             if(target.classList.contains(quarter)) {
-                // if(target.classList.contains(topTeam)) {
-                //     target.classList.add('selected-row')
-                //     target.nextElementSibling.classList.remove('selected-row')
-
-                //     // ADD CIRCLE CLASS
-                //     target.firstElementChild.nextElementSibling.innerHTML = `<i class="fas fa-check"></i>`
-                //     target.firstElementChild.nextElementSibling.classList.add('checked-circle')
-                //     target.nextElementSibling.firstElementChild.nextElementSibling.innerHTML = ``
-                //     target.nextElementSibling.firstElementChild.nextElementSibling.classList.remove('checked-circle')
-
-                // } else if(target.classList.contains(bottomTeam)) {
-                //     target.classList.add('selected-row')
-                //     target.previousElementSibling.classList.remove('selected-row')
-
-                //     // ADD CIRCLE CLASS
-                //     target.firstElementChild.nextElementSibling.innerHTML = `<i class="fas fa-check"></i>`
-                //     target.firstElementChild.nextElementSibling.classList.add('checked-circle')
-                //     target.previousElementSibling.firstElementChild.nextElementSibling.innerHTML = ``
-                //     target.previousElementSibling.firstElementChild.nextElementSibling.classList.remove('checked-circle')
-                // }
-                designSelectedTeams(quarter, semi, topTeam, bottomTeam, target)
                 semiArray.push(target)
                 semi.innerHTML = target.innerHTML;
+                addStyle();
+            } else if(parent.classList.contains(quarter)) {
+                semiArray.push(parent)
+                semi.innerHTML = parent.innerHTML;
+                addStyle()
+            }
+
+            function addStyle() {
+                designSelectedTeams(quarter, semi, topTeam, bottomTeam, target, parent)
                 semi.firstElementChild.nextElementSibling.innerHTML = ''
                 semi.firstElementChild.nextElementSibling.classList.remove('checked-circle')
                 semi.classList.remove('empty-row')
@@ -56,6 +45,7 @@ function addSemiTeams(quarter, semi, semiArray, topTeam, bottomTeam) {
             }
         }
     });
+
 }
 
 
@@ -64,17 +54,26 @@ function addSemiTeams(quarter, semi, semiArray, topTeam, bottomTeam) {
 function addFinalTeams(semi, final, finalArray, topTeam, bottomTeam) {
     bracketContent.addEventListener('click', (e) => {
         const target = e.target
+        const parent = target.parentNode.parentNode
     
         if(target !== e.currentTarget) {
             if(target.classList.contains(semi) && !target.classList.contains('empty-row')) {
-                designSelectedTeams(semi, final, topTeam, bottomTeam, target)
                 finalArray.push(target)
                 final.innerHTML = target.innerHTML;
+                addStyle()
+            } else if(parent.classList.contains(semi) && !parent.classList.contains('empty-row')) {
+                finalArray.push(parent)
+                final.innerHTML = parent.innerHTML;
+                addStyle()
+            }
+
+            function addStyle() {
+                designSelectedTeams(semi, final, topTeam, bottomTeam, target, parent)
                 final.firstElementChild.nextElementSibling.innerHTML = ''
                 final.firstElementChild.nextElementSibling.classList.remove('checked-circle')
-                final.classList.remove('empty-row', 'selected-row')
-                semiFinalStageCheck();
-            } 
+                final.classList.remove('empty-row')
+                semiFinalStageCheck()
+            }
 
             resetFinalTeams('q-1', final, s1, s2)
             resetFinalTeams('q-2', final, s1, s2)
@@ -90,13 +89,18 @@ function addFinalTeams(semi, final, finalArray, topTeam, bottomTeam) {
 function selectWinner(final, topTeam, bottomTeam) {
     bracketContent.addEventListener('click', (e) => {
         const target = e.target
+        const parent = target.parentNode.parentNode
     
         if(target !== e.currentTarget) {
             if(target.classList.contains(final) && !target.classList.contains('empty-row')) {
                 designSelectedTeams(undefined, undefined, topTeam, bottomTeam, target)
                 finalStageCheck();
                 createWinnerPopUp();
-            } 
+            } else if(parent.classList.contains(final) && !parent.classList.contains('empty-row')) {
+                designSelectedTeams(undefined, undefined, topTeam, bottomTeam, target, parent)
+                finalStageCheck();
+                createWinnerPopUp();
+            }
         }
     });
 }
@@ -105,27 +109,45 @@ selectWinner('final', 'f-1', 'f-2')
 
 
 // ADD EFFECTS ON SELECTED TEAMS
-function designSelectedTeams(firstStage, secondStage, topTeam, bottomTeam, target) {
-    if(target.classList.contains(topTeam)) {
-        target.classList.add('selected-row')
-        target.nextElementSibling.classList.remove('selected-row')
+function designSelectedTeams(firstStage, secondStage, topTeam, bottomTeam, target, parent) {
+
+    const addTopTeam = function(element) {
+        element.classList.add('selected-row')
+        element.nextElementSibling.classList.remove('selected-row')
 
         // ADD CIRCLE CLASS
-        target.firstElementChild.nextElementSibling.innerHTML = `<i class="fas fa-check"></i>`
-        target.firstElementChild.nextElementSibling.classList.add('checked-circle')
-        target.nextElementSibling.firstElementChild.nextElementSibling.innerHTML = ``
-        target.nextElementSibling.firstElementChild.nextElementSibling.classList.remove('checked-circle')
-
-    } else if(target.classList.contains(bottomTeam)) {
-        target.classList.add('selected-row')
-        target.previousElementSibling.classList.remove('selected-row')
-
-        // ADD CIRCLE CLASS
-        target.firstElementChild.nextElementSibling.innerHTML = `<i class="fas fa-check"></i>`
-        target.firstElementChild.nextElementSibling.classList.add('checked-circle')
-        target.previousElementSibling.firstElementChild.nextElementSibling.innerHTML = ``
-        target.previousElementSibling.firstElementChild.nextElementSibling.classList.remove('checked-circle')
+        element.firstElementChild.nextElementSibling.innerHTML = `<i class="fas fa-check"></i>`
+        element.firstElementChild.nextElementSibling.classList.add('checked-circle')
+        element.nextElementSibling.firstElementChild.nextElementSibling.innerHTML = ``
+        element.nextElementSibling.firstElementChild.nextElementSibling.classList.remove('checked-circle')
     }
+
+    const addBottomTeam = function(element) {
+        element.classList.add('selected-row')
+        element.previousElementSibling.classList.remove('selected-row')
+
+        // ADD CIRCLE CLASS
+        element.firstElementChild.nextElementSibling.innerHTML = `<i class="fas fa-check"></i>`
+        element.firstElementChild.nextElementSibling.classList.add('checked-circle')
+        element.previousElementSibling.firstElementChild.nextElementSibling.innerHTML = ``
+        element.previousElementSibling.firstElementChild.nextElementSibling.classList.remove('checked-circle')
+    }
+
+    // TOP TEAMS
+    if(target.classList.contains(topTeam)) {
+        addTopTeam(target)
+
+    } else if(parent.classList.contains(topTeam)) {
+       addTopTeam(parent)
+    }
+    
+    // BOTTOM TEAMS
+    else if(target.classList.contains(bottomTeam)) {
+       addBottomTeam(target)
+    } 
+    else if(parent.classList.contains(bottomTeam)) {
+        addBottomTeam(parent)
+    } 
 }
 
 
@@ -371,7 +393,6 @@ function openAndCloseDropdownMenu() {
                 && e.target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode != dropdownMenu
                 ) {
                 dropdownMenu.style.display = 'none'
-                console.log(e.target.parentNode)
             }
         })
 }
