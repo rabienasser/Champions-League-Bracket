@@ -351,3 +351,17 @@ function createPopUp() {
             popUp.style.display = 'none'
         }
     })
+
+
+    function test() {
+        const dropdownMenu = document.querySelector('.dropdown-menu')
+        const menu = document.querySelector('.menu')
+
+        menu.addEventListener('click', () => {
+            dropdownMenu.style.display = 'block'
+        })
+
+        dropdownMenu.style.displa7 = 'block' ? console.log('wheeze') : console.log(123)
+    }
+
+    test();

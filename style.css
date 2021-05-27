@@ -34,6 +34,7 @@ body * {
 nav {
     background: rgb(0, 0, 75);
     position: relative;
+    z-index: 3;
 }
 
 .nav-container {
@@ -159,26 +160,107 @@ li.current {
     border-bottom: 3px solid var(--color);
 }
 
+
+
+/* GAME MENU */
 .dropdown-menu {
     position: absolute;
-    background: grey;
+    background: rgb(0, 0, 75);
+    color: white;
     height: 470px;
     width: 320px;
     top: 80px;
     right: 15px;
-    border-top: 1px solid var(--color);
-    opacity: 0;
+    border-width: 1px;
+    border-style: solid;
+    border-image:   linear-gradient(
+        rgb(90, 247, 220),
+        rgb(0,0,0,0)
+      ) 1;
+    /* display: none; */
 }
 
 .dropdown-container {
     height: 100%;
     width: 85%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     margin: auto;
 }
 
+.dropdown-games {
+    padding: 5px 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+}
+
+.dropdown-bottom {
+    /* background: #CECECE1A; */
+    background: red;
+    color: white;
+    width: 100%;
+}
+
+.game {
+    margin: 20px 0;
+}
+
+.game p {
+    text-align: center;
+    font-size: 14px;
+}
+
+.box {
+    border-radius: 10%;
+    font-size: 14px;
+    height: 80px;
+    width: 80px;
+    cursor: pointer;
+    color: white;
+    padding: 5px;
+    margin-bottom: 8px;
+}
+
+.game-img {
+    height: 90%;
+    width: 100%;
+    display: block;
+    margin: auto;
+}
+
+.bracket-box {
+    border: 1px solid rgba(90, 247, 220, 0.5);
+}
+
+.bracket-box:hover {
+    border: 2px solid var(--color);
+    box-shadow: rgba(0, 147, 224, 0.7) 0px 0px 15px 2px;
+}
+
+.POTW-box {
+    border: 1px solid rgba(227, 0, 11, 0.5);
+}
+
+.POTW-box:hover {
+    border: 2px solid rgba(227, 0, 11);
+    box-shadow: rgba(231, 11, 22, 0.7) 0px 0px 15px 2px;
+}
+
+.live-manager-box {
+    border: 1px solid rgba(169, 86, 247, 0.5);
+}
+
+.live-manager-box:hover {
+    border: 2px solid rgb(169, 86, 247);
+    box-shadow: rgb(189, 119, 255, 0.7) 0px 0px 15px 2px;
+}
+
+.fantasy-football-box {
+    
+}
+
+.fantasy-football-box:hover {
+    
+}
 
 /* BRACKET AREA */
 .bracket {
