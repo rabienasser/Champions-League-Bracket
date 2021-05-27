@@ -361,7 +361,11 @@ function test() {
         dropdownMenu.style.display = 'block'
     })
 
-    // dropdownMenu.style.displa7 = 'block' ? console.log('wheeze') : console.log(123)
+    // document.addEventListener('click', (e) => {
+    //     if(dropdownMenu.style.display = 'block') {
+    //         dropdownMenu.style.display = 'none'
+    //     }
+    // })
 }
 
 test();
