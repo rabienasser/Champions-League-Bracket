@@ -234,6 +234,7 @@ li.current {
 .bracket-box:hover {
     border: 2px solid var(--color);
     box-shadow: rgba(0, 147, 224, 0.7) 0px 0px 15px 2px;
+    transition: 0.2s ease;
 }
 
 .POTW-box {
@@ -243,6 +244,7 @@ li.current {
 .POTW-box:hover {
     border: 2px solid rgba(227, 0, 11);
     box-shadow: rgba(231, 11, 22, 0.7) 0px 0px 15px 2px;
+    transition: 0.2s ease;
 }
 
 .live-manager-box {
@@ -252,14 +254,47 @@ li.current {
 .live-manager-box:hover {
     border: 2px solid rgb(169, 86, 247);
     box-shadow: rgb(189, 119, 255, 0.7) 0px 0px 15px 2px;
+    transition: 0.2s ease;
 }
 
 .fantasy-football-box {
-    
+    border: 1px solid rgba(3, 137, 250, 0.5);
 }
 
 .fantasy-football-box:hover {
-    
+    border: 2px solid rgb(3, 137, 250);
+    box-shadow: rgba(25, 145, 243, 0.7) 0px 0px 15px 2px;
+    transition: 0.2s ease;
+}
+
+.predictor-box {
+    border: 1px solid rgba(69, 191, 255, 0.5);
+}
+
+.predictor-box:hover {
+    border: 2px solid rgb(69, 191, 255);
+    box-shadow: rgba(91, 190, 243, 0.7) 0px 0px 15px 2px;
+    transition: 0.2s ease;
+}
+
+.GOTW-box {
+    border: 1px solid rgba(196, 199, 19, 0.5);
+}
+
+.GOTW-box:hover {
+    border: 2px solid rgb(196, 199, 19);
+    box-shadow: rgba(244, 248, 14, 0.7) 0px 0px 15px 2px;
+    transition: 0.2s ease;
+}
+
+.fantasy5-box {
+    border: 1px solid rgba(220, 71, 238, 0.5);
+}
+
+.fantasy5-box:hover {
+    border: 2px solid rgb(220, 71, 238);
+    box-shadow: rgba(239, 113, 253, 0.7) 0px 0px 15px 2px;
+    transition: 0.2s ease;
 }
 
 /* BRACKET AREA */

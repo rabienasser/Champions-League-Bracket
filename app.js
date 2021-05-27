@@ -353,15 +353,15 @@ function createPopUp() {
     })
 
 
-    function test() {
-        const dropdownMenu = document.querySelector('.dropdown-menu')
-        const menu = document.querySelector('.menu')
+function test() {
+    const dropdownMenu = document.querySelector('.dropdown-menu')
+    const menu = document.querySelector('.menu')
 
-        menu.addEventListener('click', () => {
-            dropdownMenu.style.display = 'block'
-        })
+    menu.addEventListener('click', () => {
+        dropdownMenu.style.display = 'block'
+    })
 
-        dropdownMenu.style.displa7 = 'block' ? console.log('wheeze') : console.log(123)
-    }
+    // dropdownMenu.style.displa7 = 'block' ? console.log('wheeze') : console.log(123)
+}
 
-    test();
+test();
