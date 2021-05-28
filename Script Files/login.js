@@ -4,6 +4,7 @@ const closeBtn = document.querySelector('.close-create-acct')
 const alreadyHaveAcctBtn = document.querySelector('.already-have-acct-btn')
 const createAcctForm = document.querySelector('.create-acct-form')
 const loginBtn = document.querySelector('.log-in-btn')
+const htpLoginBtn = document.querySelector('.htp-login-btn')
 
 
 // GENERATE UEFA LOG-IN SCREEN
@@ -11,13 +12,13 @@ function UEFALogIn() {
     const loginOverlay = document.querySelector('.log-in-overlay')
     const closeBtn = document.querySelector('.close-log-in')
 
-    loginOverlay.style.opacity = 1
+    loginOverlay.style.display = 'flex'
     loginOverlay.style.zIndex = 3
     createAcctOverlay.style.display = 'none'
     createAcctOverlay.style.zIndex = 1
 
     closeBtn.addEventListener('click', () => {
-        loginOverlay.style.opacity = 0
+        loginOverlay.style.display = 'none'
         loginOverlay.style.zIndex = 1
     })
 
@@ -62,7 +63,7 @@ function submitLogIn() {
 // GENERATE UEFA CREATE-ACCOUNT SCREEN
 function createAcct(loginOverlay) {
     createAcctBtn.addEventListener('click', () => {
-        loginOverlay.style.opacity = 0
+        loginOverlay.style.display = 'none'
         loginOverlay.style.zIndex = 1
         createAcctOverlay.style.display = 'flex'
         createAcctOverlay.style.zIndex = 3
@@ -186,6 +187,8 @@ function createLastName() {
 // EVENT LISTENERS
 // PULL LOGIN SCREEN WHEN LOGIN BTN IS PRESSED
 loginBtn.addEventListener('click', UEFALogIn)
+
+htpLoginBtn.addEventListener('click', UEFALogIn)
 
 alreadyHaveAcctBtn.addEventListener('click', UEFALogIn)
 

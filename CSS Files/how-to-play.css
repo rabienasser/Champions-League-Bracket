@@ -3,7 +3,7 @@
 }
 
 .row-section {
-    height: 80vh;
+    height: fit-content;
 }
 
 
@@ -12,7 +12,7 @@
 .intro {
     color: white;
     background: url('../images/Champions\ league\ background2.jpg') no-repeat top center/cover;
-    height: 55vh;
+    padding: 20px 0;
 }
 
 .row-section-container {
@@ -20,7 +20,7 @@
     max-width: 95%;
     height: 100%;
     margin: auto;
-    padding: 30px 0;
+    padding: 40px 0;
 }
 
 .intro-content {
@@ -43,11 +43,12 @@
 .htp-btn {
     color: #00004B;
     background: var(--color);
-    width: 60%;
+    width: 290px;
+    height: 48px;
     font-size: 16px;
 }
 
-.read-rules-btn:hover {
+.htp-btn:hover {
     opacity: 1;
 }
 
@@ -65,14 +66,40 @@
 
 .mid-sect {
     display: flex;
+    padding: 30px 0;
 }
 
 .mid-block {
     display: flex;
     flex-direction: column;
+    text-align: center;
+}
+
+.mid-block h2 {
+    margin-bottom: 30px;
 }
 
 .mid-block img {
     height: 200px;
     width: 270px;
+    margin: auto;
+}
+
+.mid-block p {
+    width: 80%;
+    margin: auto;
+}
+
+/* SECTION 3 */
+.win-prizes {
+    background: url('../images/Champions\ league\ background2.jpg') no-repeat top right/cover;
+}
+
+.win-prizes-container {
+    color: white;
+}
+
+.prizes-ad {
+    margin: auto;
+    margin-top: 50px;
 }
