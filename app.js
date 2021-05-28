@@ -75,10 +75,10 @@ function addFinalTeams(semi, final, finalArray, topTeam, bottomTeam) {
                 semiFinalStageCheck()
             }
 
-            resetFinalTeams('q-1', final, s1, s2)
-            resetFinalTeams('q-2', final, s1, s2)
-            resetFinalTeams('q-3', final, s3, s4)
-            resetFinalTeams('q-4', final, s3, s4)
+            resetFinalTeams('q-1', final, s1, s2, s3, s4)
+            resetFinalTeams('q-2', final, s1, s2, s3, s4)
+            resetFinalTeams('q-3', final, s1, s2, s3, s4)
+            resetFinalTeams('q-4', final, s1, s2, s3, s4)
         }
     });
 }
@@ -93,7 +93,7 @@ function selectWinner(final, topTeam, bottomTeam) {
     
         if(target !== e.currentTarget) {
             if(target.classList.contains(final) && !target.classList.contains('empty-row')) {
-                designSelectedTeams(undefined, undefined, topTeam, bottomTeam, target)
+                designSelectedTeams(undefined, undefined, topTeam, bottomTeam, target, parent)
                 finalStageCheck();
                 createWinnerPopUp();
             } else if(parent.classList.contains(final) && !parent.classList.contains('empty-row')) {
@@ -174,22 +174,33 @@ function finalStageCheck() {
 
 
 // RESET FINAL TEAMS WHEN SEMI-FINAL TEAM IS CHANGED
-function resetFinalTeams(gameBox, final, semi1, semi2) {
+function resetFinalTeams(gameBox, final, semi1, semi2, semi3, semi4) {
     bracketContent.addEventListener('click', (e) => {
         const target = e.target
+        const parent = target.parentNode.parentNode
+
+        function reset(top, bottom) {
+            final.innerHTML = `
+            <i class="fas fa-shield-alt team-logo shield"></i>
+            `;
+            final.classList.add('empty-row')
+            
+            top.classList.remove('selected-row')
+            bottom.classList.remove('selected-row')
+            top.firstElementChild.nextElementSibling.classList.remove('checked-circle')
+            top.firstElementChild.nextElementSibling.innerHTML = ``
+            bottom.firstElementChild.nextElementSibling.classList.remove('checked-circle')
+            bottom.firstElementChild.nextElementSibling.innerHTML = ``
+            }
 
         if(target !== e.currentTarget) {
             if(!final.classList.contains('empty-row') && target.classList.contains(gameBox) && target.innerHTML !== final.innerHTML) {
-                final.innerHTML = `
-                <i class="fas fa-shield-alt team-logo shield"></i>
-                `;
-                final.classList.add('empty-row')
-                semi1.classList.remove('selected-row')
-                semi2.classList.remove('selected-row')
-                semi1.firstElementChild.nextElementSibling.classList.remove('checked-circle')
-                semi1.firstElementChild.nextElementSibling.innerHTML = ``
-                semi2.firstElementChild.nextElementSibling.classList.remove('checked-circle')
-                semi2.firstElementChild.nextElementSibling.innerHTML = ``
+                reset(semi1, semi2)
+                reset(semi3, semi4)
+            } 
+            else if(!final.classList.contains('empty-row') && parent.classList.contains(gameBox) && parent.innerHTML !== final.innerHTML) {
+                reset(semi1, semi2)
+                reset(semi3, semi4)
             }
         }
     })
@@ -254,16 +265,22 @@ function createWinnerPopUp() {
 function removeWinnerPopUp() {
     bracketContent.addEventListener('click', (e) => {
         const target = e.target
+        const parent = target.parentNode.parentNode
 
-        if(!f1.classList.contains('empty-row') && !f2.classList.contains('empty-row')) {
+        function remove(element) {
             const firstFinalist = f1.firstElementChild.nextElementSibling.innerHTML
             const secondFinalist = f2.firstElementChild.nextElementSibling.innerHTML
             if(firstFinalist === '' && secondFinalist === '') {
                 winnerPopUp.classList.remove('show')
             }
-            if(target.classList.contains('quarter')) {
+            if(element.classList.contains('quarter')) {
                 winnerPopUp.classList.remove('show')
             }
+        }
+
+        if(!f1.classList.contains('empty-row') && !f2.classList.contains('empty-row')) {
+           remove(target)
+           remove(parent)
         }
     })
 }
