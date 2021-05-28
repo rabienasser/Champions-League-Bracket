@@ -3,6 +3,7 @@ const createAcctBtn = document.querySelector('.create-account-btn')
 const closeBtn = document.querySelector('.close-create-acct')
 const alreadyHaveAcctBtn = document.querySelector('.already-have-acct-btn')
 const createAcctForm = document.querySelector('.create-acct-form')
+const loginBtn = document.querySelector('.log-in-btn')
 
 
 // GENERATE UEFA LOG-IN SCREEN
@@ -12,7 +13,7 @@ function UEFALogIn() {
 
     loginOverlay.style.opacity = 1
     loginOverlay.style.zIndex = 3
-    createAcctOverlay.style.opacity = 0
+    createAcctOverlay.style.display = 'none'
     createAcctOverlay.style.zIndex = 1
 
     closeBtn.addEventListener('click', () => {
@@ -63,12 +64,12 @@ function createAcct(loginOverlay) {
     createAcctBtn.addEventListener('click', () => {
         loginOverlay.style.opacity = 0
         loginOverlay.style.zIndex = 1
-        createAcctOverlay.style.opacity = 1
+        createAcctOverlay.style.display = 'flex'
         createAcctOverlay.style.zIndex = 3
     })
 
     closeBtn.addEventListener('click', () => {
-        createAcctOverlay.style.opacity = 0
+        createAcctOverlay.style.display = 'none'
         createAcctOverlay.style.zIndex = 1
     })
 
@@ -163,6 +164,7 @@ function createFirstName() {
 }
 
 
+
 // CREATE LAST NAME
 function createLastName() {
     re = /^[a-zA-Z]+$/;
@@ -178,6 +180,7 @@ function createLastName() {
         success.style.display = 'flex'
     }
 }
+
 
 
 // EVENT LISTENERS
@@ -200,3 +203,27 @@ createAcctForm.addEventListener('submit', (e) => {
 
     e.preventDefault();
 })
+
+
+function openAndCloseDropdownMenu() {
+    const dropdownMenu = document.querySelector('.dropdown-menu')
+    const menu = document.querySelector('.menu')
+
+        menu.addEventListener('click', () => {
+            dropdownMenu.style.display = 'block'
+        })
+
+        window.addEventListener('mouseup', (e) => {
+            if(e.target !== dropdownMenu 
+                && e.target.parentNode != dropdownMenu
+                && e.target.parentNode.parentNode != dropdownMenu
+                && e.target.parentNode.parentNode.parentNode != dropdownMenu
+                && e.target.parentNode.parentNode.parentNode.parentNode != dropdownMenu
+                && e.target.parentNode.parentNode.parentNode.parentNode.parentNode != dropdownMenu
+                && e.target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode != dropdownMenu
+                ) {
+                dropdownMenu.style.display = 'none'
+            }
+        })
+}
+openAndCloseDropdownMenu();

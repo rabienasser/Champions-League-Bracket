@@ -2,7 +2,6 @@ const popUp = document.querySelector('.pop-up-container')
 const popUpContainer = document.querySelector('.pop-up-container')
 const bracketContent = document.querySelector('.bracket-content')
 const winnerPopUp = document.querySelector('.bracket-complete')
-const loginBtn = document.querySelector('.log-in-btn')
 const s1 = document.querySelector('.s-1')
 const s2 = document.querySelector('.s-2')
 const s3 = document.querySelector('.s-3')
@@ -391,26 +390,3 @@ function createPopUp() {
         }
     })
 
-
-function openAndCloseDropdownMenu() {
-    const dropdownMenu = document.querySelector('.dropdown-menu')
-    const menu = document.querySelector('.menu')
-
-        menu.addEventListener('click', () => {
-            dropdownMenu.style.display = 'block'
-        })
-
-        window.addEventListener('mouseup', (e) => {
-            if(e.target !== dropdownMenu 
-                && e.target.parentNode != dropdownMenu
-                && e.target.parentNode.parentNode != dropdownMenu
-                && e.target.parentNode.parentNode.parentNode != dropdownMenu
-                && e.target.parentNode.parentNode.parentNode.parentNode != dropdownMenu
-                && e.target.parentNode.parentNode.parentNode.parentNode.parentNode != dropdownMenu
-                && e.target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode != dropdownMenu
-                ) {
-                dropdownMenu.style.display = 'none'
-            }
-        })
-}
-openAndCloseDropdownMenu();

@@ -10,6 +10,7 @@
     align-items: center;
     justify-content: center;
     opacity: 0;
+    /* display: none; */
     z-index: 1;
 }
 
@@ -40,7 +41,7 @@
 }
 
 .uefa .left-div {
-    background: url('./images/Champions\ league\ background2.jpg') no-repeat left center/cover;
+    background: url('../images/Champions\ league\ background2.jpg') no-repeat left center/cover;
 }
 
 .left-div::after {
@@ -240,7 +241,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0;
+    /* opacity: 1; */
+    display: none;
     z-index: 1;
 }
 
@@ -362,6 +364,3 @@
     font-size: 14px;
     display: none;
 }
-
-
-/* CHANGE OPACITY TO DISPLAY NONE */
