@@ -9,7 +9,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    /* opacity: 0; */
     display: none;
     z-index: 1;
 }
@@ -17,7 +16,8 @@
 .uefa {
     background: grey;
     height: 100%;
-    width: 60%;
+    min-width: 60%;
+    max-width: 80%;
     position: relative;
     overflow-x: auto;
 }
@@ -38,6 +38,11 @@
     background: none;
     cursor: pointer;
     color: rgb(48, 49, 110);
+}
+
+.top-div-close {
+    color: blue;
+    display: none;
 }
 
 .uefa .left-div {
@@ -241,7 +246,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    /* opacity: 1; */
     display: none;
     z-index: 1;
 }

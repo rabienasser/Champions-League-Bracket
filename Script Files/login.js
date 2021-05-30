@@ -9,16 +9,18 @@ const loginBtn = document.querySelector('.log-in-btn')
 // GENERATE UEFA LOG-IN SCREEN
 function UEFALogIn() {
     const loginOverlay = document.querySelector('.log-in-overlay')
-    const closeBtn = document.querySelector('.close-log-in')
+    const closeBtn = document.querySelectorAll('.close-log-in')
 
     loginOverlay.style.display = 'flex'
     loginOverlay.style.zIndex = 3
     createAcctOverlay.style.display = 'none'
     createAcctOverlay.style.zIndex = 1
 
-    closeBtn.addEventListener('click', () => {
-        loginOverlay.style.display = 'none'
-        loginOverlay.style.zIndex = 1
+    closeBtn.forEach(button => {
+        button.addEventListener('click', () => {
+            loginOverlay.style.display = 'none'
+            loginOverlay.style.zIndex = 1
+        })
     })
 
     submitLogIn();
