@@ -94,21 +94,52 @@
         display: none;
     }
 
+
+    /* HOW TO PLAY */
+    .intro .row-section-container {
+        width: 100%;
+    }
+
+    .intro-img {
+        height: 100%;
+        width: 100%;
+    }
+
+    .how-it-works {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .mid-sect {
+        flex-direction: column;
+    }
     
 }
 
 
 
 @media (max-width: 768px) {
-/* .top-nav {
-    display: flex;
-    flex-direction: column;
-}
+    /* NAVBAR */
+    .right-nav {
+        display: none;
+    }
+
+    .right-nav-resp {
+        display: flex;
+        align-items: center;
+    }
 
     .selected {
         display: none;
     }
 
+    .dropdown-menu {
+        top: 155px;
+        right: 15px;
+    }
+
+
+    /* BRACKET */
     .bracket-container {
         display: flex;
         flex-wrap: nowrap;
@@ -116,14 +147,34 @@
         width: auto;
     }
 
-    .advertisement {
-        display: none;
-    }
-
     .continue-btn {
         width: 80%;
-    } */
+    }
+
+
+    /* HOW TO PLAY */
+    .intro-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+
+    .advertisement {
+        width: 75%;
+    }
+
+    .advertisement h2 {
+        font-size: 20px;
+    }
+    
+    .advertisement button {
+        padding: 5px;
+        font-size: 12px;
+    }
+
 }
+
+
 
 
 @media (max-width: 650px) {

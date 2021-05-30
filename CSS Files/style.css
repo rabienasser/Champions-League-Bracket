@@ -15,16 +15,6 @@ body {
     color: white;
 }
 
-/* body::after {
-    content: '';
-    top: 0;
-    left: 0;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    background-color: rgba(0,0,0,0.3);
-} */
-
 body * {
     z-index: 2;
 }
@@ -113,6 +103,16 @@ a {
     cursor: pointer;
 }
 
+.right-nav-resp {
+    display: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.right-nav-resp button {
+    margin-left: 10px;
+}
+
 
 .log-in-btn {
     padding: 8px;
@@ -130,9 +130,14 @@ a {
     /* position: relative; */
 }
 
+.bottom-nav ul .list-items {
+    display: flex;
+}
+
 .bottom-nav ul{
     display: flex;
     list-style: none;
+    justify-content: space-between;
 }
 
 .bottom-nav ul i{

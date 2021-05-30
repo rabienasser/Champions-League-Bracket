@@ -3,7 +3,7 @@ const createAcctBtn = document.querySelector('.create-account-btn')
 const closeBtn = document.querySelector('.close-create-acct')
 const alreadyHaveAcctBtn = document.querySelector('.already-have-acct-btn')
 const createAcctForm = document.querySelector('.create-acct-form')
-const loginBtn = document.querySelector('.log-in-btn')
+const loginBtn = document.querySelectorAll('.log-in-btn')
 
 
 // GENERATE UEFA LOG-IN SCREEN
@@ -187,7 +187,10 @@ function createLastName() {
 
 // EVENT LISTENERS
 // PULL LOGIN SCREEN WHEN LOGIN BTN IS PRESSED
-loginBtn.addEventListener('click', UEFALogIn)
+loginBtn.forEach(button => {
+    button.addEventListener('click', UEFALogIn)
+})
+
 
 
 alreadyHaveAcctBtn.addEventListener('click', UEFALogIn)
@@ -210,10 +213,12 @@ createAcctForm.addEventListener('submit', (e) => {
 
 function openAndCloseDropdownMenu() {
     const dropdownMenu = document.querySelector('.dropdown-menu')
-    const menu = document.querySelector('.menu')
+    const menu = document.querySelectorAll('.menu')
 
-        menu.addEventListener('click', () => {
-            dropdownMenu.style.display = 'block'
+        menu.forEach(menu => {
+            menu.addEventListener('click', () => {
+                dropdownMenu.style.display = 'block'
+            })
         })
 
         window.addEventListener('mouseup', (e) => {

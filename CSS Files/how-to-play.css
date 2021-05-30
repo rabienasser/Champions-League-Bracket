@@ -93,6 +93,7 @@
 /* SECTION 3 */
 .win-prizes {
     background: url('../images/Champions\ league\ background2.jpg') no-repeat top right/cover;
+    padding-bottom: 30px;
 }
 
 .win-prizes-container {
@@ -101,5 +102,4 @@
 
 .prizes-ad {
     margin: auto;
-    margin-top: 50px;
 }
