@@ -4,7 +4,6 @@ const closeBtn = document.querySelector('.close-create-acct')
 const alreadyHaveAcctBtn = document.querySelector('.already-have-acct-btn')
 const createAcctForm = document.querySelector('.create-acct-form')
 const loginBtn = document.querySelector('.log-in-btn')
-const htpLoginBtn = document.querySelector('.htp-login-btn')
 
 
 // GENERATE UEFA LOG-IN SCREEN
@@ -188,7 +187,6 @@ function createLastName() {
 // PULL LOGIN SCREEN WHEN LOGIN BTN IS PRESSED
 loginBtn.addEventListener('click', UEFALogIn)
 
-htpLoginBtn.addEventListener('click', UEFALogIn)
 
 alreadyHaveAcctBtn.addEventListener('click', UEFALogIn)
 
