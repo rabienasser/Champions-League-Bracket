@@ -172,6 +172,19 @@
         font-size: 12px;
     }
 
+
+    /* RULES AND PRIZES */
+    .rules .prizes-paragraph {
+        font-size: 16px;
+    }
+    
+    .rules .prizes-heading {
+        font-size: 24px;
+    }
+
+    .bracket-container {
+        width: 90%;
+    }
 }
 
 
@@ -192,5 +205,35 @@
     .create-account {
         width: 50%;
         height: 70%;
+    }
+}
+
+
+@media (max-width: 504px) {
+    /* NAVBAR */
+    .bottom-nav {
+        font-size: 14px;
+        margin: 20px 10px 0px 10px;
+    }
+
+    .bottom-nav .log-in-btn {
+        padding: 2px;
+    }
+
+    .bottom-nav li {
+        padding: 0;
+        text-align: center;
+        display: flex;
+        align-items: center;
+    }
+
+    .bottom-nav ul li.selected {
+        display: none;
+    }
+
+
+    /* ADVERTISEMENT */
+    .advertisement {
+        display: none;
     }
 }
