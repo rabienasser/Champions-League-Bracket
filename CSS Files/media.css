@@ -191,6 +191,29 @@
 
 
 @media (max-width: 650px) {
+    /* BRACKET */
+    .bracket-body {
+        width: 300%;
+        overflow-x: scroll;
+    }
+
+    .bracket-body::-webkit-scrollbar {
+        display: block;
+        width: 12px;
+    }
+    
+    .bracket-body::-webkit-scrollbar-thumb {
+        background: #00004B;
+    }
+
+    
+    .bracket-container {
+        width: 99%;
+    }
+
+    .bracket-ad {
+        display: none;
+    }
 
     /* LOGIN SCREEN */
     .uefa {
