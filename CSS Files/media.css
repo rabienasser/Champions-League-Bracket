@@ -34,10 +34,6 @@
         display: grid;
     }
 
-    .social {
-        display: flex;
-        flex-direction: column;
-    }
 
     .social p {
         margin-bottom: 10px;

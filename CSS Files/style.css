@@ -328,7 +328,7 @@ li.current {
     display: flex;
     flex-direction: column;
     height: 100%;
-    width: 75%;
+    width: 70%;
     margin: auto;
 }
 
@@ -510,6 +510,7 @@ li.current {
     margin-bottom: 30px;
     cursor: pointer;
     background: url('../images/ad-photo.jpg') no-repeat center center/cover;
+    color: white;
 }
 
 .ad-container {
@@ -754,3 +755,53 @@ footer {
 }
 
 
+/* RULES AND PRIZES */
+.rules {
+    color: rgb(48, 49, 110);
+}
+
+.rules .rules-content {
+    padding: 50px 0;
+}
+
+.rules .heading h1 {
+    margin-bottom: 20px
+}
+
+.rules .social {
+    margin: 20px 0 50px;
+    text-align: left;
+}
+
+.prizes-social-links li{
+    color: rgb(13, 58, 255);
+    border-radius: 100%;
+    border-color: rgb(13, 58, 255);
+}
+
+.rules .prizes-paragraph {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.rules .prizes-heading {
+    color: #00004B;
+    margin-bottom: 30px;
+}
+
+.rules a {
+    color: blue;
+    font-size: 20px;
+}
+
+.rules .italic {
+    margin-top: 30px;
+}
+
+.rules .prizes-copyright {
+    padding: 20px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 18px;
+}
