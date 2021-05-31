@@ -71,6 +71,18 @@
 
 
 @media (max-width: 860px) {
+     /* BRACKET */
+     .bracket-container {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        width: auto;
+    }
+
+    .continue-btn {
+        width: 80%;
+    }
+    
 
     /* LOG IN SCREEN */
     .uefa {
@@ -139,19 +151,6 @@
     }
 
 
-    /* BRACKET */
-    .bracket-container {
-        display: flex;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        width: auto;
-    }
-
-    .continue-btn {
-        width: 80%;
-    }
-
-
     /* HOW TO PLAY */
     .intro-content {
         flex-direction: column;
@@ -199,11 +198,12 @@
 
     .bracket-body::-webkit-scrollbar {
         display: block;
-        width: 12px;
+        width: 5px;
     }
     
     .bracket-body::-webkit-scrollbar-thumb {
         background: #00004B;
+        border-radius: 5px;
     }
 
     
