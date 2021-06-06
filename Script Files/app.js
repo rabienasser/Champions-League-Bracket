@@ -25,6 +25,15 @@ const addSemiTeams = (quarter, semi, semiArray, topTeam, bottomTeam) => {
         const parent = target.parentNode.parentNode
     
         if(target !== e.currentTarget) {
+            
+            const addStyle = () => {
+                designSelectedTeams(quarter, semi, topTeam, bottomTeam, target, parent)
+                semi.firstElementChild.nextElementSibling.innerHTML = ''
+                semi.firstElementChild.nextElementSibling.classList.remove('checked-circle')
+                semi.classList.remove('empty-row')
+                quarterFinalStageCheck()
+            }
+
             if(target.classList.contains(quarter)) {
                 semiArray.push(target)
                 semi.innerHTML = target.innerHTML;
@@ -35,13 +44,6 @@ const addSemiTeams = (quarter, semi, semiArray, topTeam, bottomTeam) => {
                 addStyle()
             }
 
-            const addStyle = () => {
-                designSelectedTeams(quarter, semi, topTeam, bottomTeam, target, parent)
-                semi.firstElementChild.nextElementSibling.innerHTML = ''
-                semi.firstElementChild.nextElementSibling.classList.remove('checked-circle')
-                semi.classList.remove('empty-row')
-                quarterFinalStageCheck()
-            }
         }
     });
 
@@ -56,6 +58,14 @@ const addFinalTeams = (semi, final, finalArray, topTeam, bottomTeam) => {
         const parent = target.parentNode.parentNode
     
         if(target !== e.currentTarget) {
+            const addStyle = () => {
+                designSelectedTeams(semi, final, topTeam, bottomTeam, target, parent)
+                final.firstElementChild.nextElementSibling.innerHTML = ''
+                final.firstElementChild.nextElementSibling.classList.remove('checked-circle')
+                final.classList.remove('empty-row')
+                semiFinalStageCheck()
+            }
+            
             if(target.classList.contains(semi) && !target.classList.contains('empty-row')) {
                 finalArray.push(target)
                 final.innerHTML = target.innerHTML;
@@ -64,14 +74,6 @@ const addFinalTeams = (semi, final, finalArray, topTeam, bottomTeam) => {
                 finalArray.push(parent)
                 final.innerHTML = parent.innerHTML;
                 addStyle()
-            }
-
-            const addStyle = () => {
-                designSelectedTeams(semi, final, topTeam, bottomTeam, target, parent)
-                final.firstElementChild.nextElementSibling.innerHTML = ''
-                final.firstElementChild.nextElementSibling.classList.remove('checked-circle')
-                final.classList.remove('empty-row')
-                semiFinalStageCheck()
             }
 
             resetFinalTeams('q-1', final, s1, s2, s3, s4)
