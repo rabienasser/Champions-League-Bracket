@@ -7,7 +7,7 @@ const loginBtn = document.querySelectorAll('.log-in-btn')
 
 
 // GENERATE UEFA LOG-IN SCREEN
-function UEFALogIn() {
+const UEFALogIn = () => {
     const loginOverlay = document.querySelector('.log-in-overlay')
     const closeBtn = document.querySelectorAll('.close-log-in')
 
@@ -30,7 +30,7 @@ function UEFALogIn() {
 
 
 // SUBMIT EMAIL AND PASSWORD ON LOGIN SCREEN
-function submitLogIn() {
+const submitLogIn = () => {
     const submitBtn = document.querySelector('.submit-btn')
     const invalidMsg = document.querySelector('.invalid-msg')
     const loader = document.querySelector('.loader')
@@ -62,7 +62,7 @@ function submitLogIn() {
 
 
 // GENERATE UEFA CREATE-ACCOUNT SCREEN
-function createAcct(loginOverlay) {
+const createAcct = (loginOverlay) => {
     createAcctBtn.addEventListener('click', () => {
         loginOverlay.style.display = 'none'
         loginOverlay.style.zIndex = 1
@@ -81,7 +81,7 @@ function createAcct(loginOverlay) {
 
 
 // HOVER OVER QUESTION ON INPUTS ON CREATE-ACCOUNT SCREEN
-function iconHover() {
+const iconHover = () => {
     const msg1 = document.querySelector('.hover-msg-1')
     const msg2 = document.querySelector('.hover-msg-2')
     const msg3 = document.querySelector('.hover-msg-3')
@@ -104,7 +104,7 @@ function iconHover() {
 
 
 // CREATE EMAIL
-function createEmail() {
+const createEmail = () => {
     re = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/
     const email = document.querySelector('.create-acct-email')
     const error = document.querySelector('.email-error')
@@ -122,7 +122,7 @@ function createEmail() {
 
 
 // // CREATE PASSWORD
-function createPassword() {
+const createPassword = () => {
     re = /^(?=.*\d)(?=.*\W)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z\W]{8,15}$/;
     const password = document.querySelector('.create-acct-password')
     const error = document.querySelector('.password-error')
@@ -150,7 +150,7 @@ function createPassword() {
 
 
 // CREATE FIRST NAME
-function createFirstName() {
+const createFirstName = () => {
     re = /^[a-zA-Z]+$/;
     const firstName = document.querySelector('.create-acct-first')
     const error = document.querySelector('.first-name-error')
@@ -168,7 +168,7 @@ function createFirstName() {
 
 
 // CREATE LAST NAME
-function createLastName() {
+const createLastName = () => {
     re = /^[a-zA-Z]+$/;
     const lastName = document.querySelector('.create-acct-last')
     const error = document.querySelector('.last-name-error')
@@ -210,8 +210,7 @@ createAcctForm.addEventListener('submit', (e) => {
     e.preventDefault();
 })
 
-
-function openAndCloseDropdownMenu() {
+const openAndCloseDropdownMenu = () => {
     const dropdownMenu = document.querySelector('.dropdown-menu')
     const menu = document.querySelectorAll('.menu')
 

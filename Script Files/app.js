@@ -19,7 +19,7 @@ const final_2 = [];
 
 
 // ADD SEMI-FINAL TEAMS
-function addSemiTeams(quarter, semi, semiArray, topTeam, bottomTeam) {
+const addSemiTeams = (quarter, semi, semiArray, topTeam, bottomTeam) => {
     bracketContent.addEventListener('click', (e) => {
         const target = e.target
         const parent = target.parentNode.parentNode
@@ -35,7 +35,7 @@ function addSemiTeams(quarter, semi, semiArray, topTeam, bottomTeam) {
                 addStyle()
             }
 
-            function addStyle() {
+            const addStyle = () => {
                 designSelectedTeams(quarter, semi, topTeam, bottomTeam, target, parent)
                 semi.firstElementChild.nextElementSibling.innerHTML = ''
                 semi.firstElementChild.nextElementSibling.classList.remove('checked-circle')
@@ -50,7 +50,7 @@ function addSemiTeams(quarter, semi, semiArray, topTeam, bottomTeam) {
 
 
 // ADD FINAL TEAMS
-function addFinalTeams(semi, final, finalArray, topTeam, bottomTeam) {
+const addFinalTeams = (semi, final, finalArray, topTeam, bottomTeam) => {
     bracketContent.addEventListener('click', (e) => {
         const target = e.target
         const parent = target.parentNode.parentNode
@@ -66,7 +66,7 @@ function addFinalTeams(semi, final, finalArray, topTeam, bottomTeam) {
                 addStyle()
             }
 
-            function addStyle() {
+            const addStyle = () => {
                 designSelectedTeams(semi, final, topTeam, bottomTeam, target, parent)
                 final.firstElementChild.nextElementSibling.innerHTML = ''
                 final.firstElementChild.nextElementSibling.classList.remove('checked-circle')
@@ -85,7 +85,7 @@ function addFinalTeams(semi, final, finalArray, topTeam, bottomTeam) {
 
 
 // CHOOSE TOURNAMENT WINNER
-function selectWinner(final, topTeam, bottomTeam) {
+const selectWinner = (final, topTeam, bottomTeam) => {
     bracketContent.addEventListener('click', (e) => {
         const target = e.target
         const parent = target.parentNode.parentNode
@@ -108,7 +108,7 @@ selectWinner('final', 'f-1', 'f-2')
 
 
 // ADD EFFECTS ON SELECTED TEAMS
-function designSelectedTeams(firstStage, secondStage, topTeam, bottomTeam, target, parent) {
+const designSelectedTeams = (firstStage, secondStage, topTeam, bottomTeam, target, parent) => {
 
     const addTopTeam = function(element) {
         element.classList.add('selected-row')
@@ -152,13 +152,13 @@ function designSelectedTeams(firstStage, secondStage, topTeam, bottomTeam, targe
 
 
 // ADD CHECKMARKS WHEN TOURNAMENT STAGES ARE COMPLETE
-function quarterFinalStageCheck() {
+const quarterFinalStageCheck = () => {
     if(!s1.classList.contains('empty-row') && !s2.classList.contains('empty-row') && !s3.classList.contains('empty-row') && !s4.classList.contains('empty-row')) {
         document.querySelector('.q-stage-check').style.display = 'flex'
     }
 }
 
-function semiFinalStageCheck() {
+const semiFinalStageCheck = () => {
     if(!f1.classList.contains('empty-row') && !f2.classList.contains('empty-row')) {
         document.querySelector('.s-stage-check').style.display = 'flex'
     } else {
@@ -166,7 +166,7 @@ function semiFinalStageCheck() {
     }
 }
 
-function finalStageCheck() {
+const finalStageCheck = () => {
     if(f1.classList.contains('selected-row') || f2.classList.contains('selected-row')) {
         document.querySelector('.f-stage-check').style.display = 'flex'
     }
@@ -175,7 +175,7 @@ function finalStageCheck() {
 
 
 // RESET FINAL TEAMS WHEN SEMI-FINAL TEAM IS CHANGED
-function resetFinalTeams(gameBox, final, semi1, semi2, semi3, semi4) {
+const resetFinalTeams = (gameBox, final, semi1, semi2, semi3, semi4) => {
     bracketContent.addEventListener('click', (e) => {
         const target = e.target
         const parent = target.parentNode.parentNode
@@ -210,29 +210,29 @@ function resetFinalTeams(gameBox, final, semi1, semi2, semi3, semi4) {
 
 
 // ADD SEMI-FINAL AND FINAL TEAMS TO DOM
-function addSemiOne() {
+const addSemiOne = () => {
     addSemiTeams('q-1', s1, semi_1, 'team-1', 'team-2')
 }
-function addSemiTwo() {
+const addSemiTwo = () => {
     addSemiTeams('q-2', s2, semi_2, 'team-3', 'team-4')
 }
-function addSemiThree() {
+const addSemiThree = () => {
     addSemiTeams('q-3', s3, semi_3, 'team-5', 'team-6')
 }
-function addSemiFour() {
+const addSemiFour = () => {
     addSemiTeams('q-4', s4, semi_4, 'team-7', 'team-8')
 }
-function addFinalOne() {
+const addFinalOne = () => {
     addFinalTeams('s-one', f1, final_1, 's-team-1', 's-team-2')
 }
-function addFinalTwo() {
+const addFinalTwo = () => {
     addFinalTeams('s-two', f2, final_2, 's-team-3', 's-team-4')
 }
 
 
 
 // CALL SEMI FINAL AND FINAL FUNCTIONS
-function semiCall() {
+const semiCall = () => {
     addSemiOne();
     addSemiTwo();
     addSemiThree();
@@ -241,7 +241,7 @@ function semiCall() {
 semiCall();
 
 
-function finalCall() {
+const finalCall = () => {
     addFinalOne();
     addFinalTwo();
 }
@@ -250,7 +250,7 @@ finalCall();
 
 
 // CREATE POPUP WHEN TOURNAMENT WINNER IS SELECTED
-function createWinnerPopUp() {
+const createWinnerPopUp = () => {
     const popUpBtn = document.querySelector('.continue-btn')
 
     winnerPopUp.classList.add('show')
@@ -263,7 +263,7 @@ function createWinnerPopUp() {
 
 
 // REMOVE POPUP WHEN NEW TEAMS ARE SELECTED
-function removeWinnerPopUp() {
+const removeWinnerPopUp = () => {
     bracketContent.addEventListener('click', (e) => {
         const target = e.target
         const parent = target.parentNode.parentNode
@@ -290,7 +290,7 @@ removeWinnerPopUp();
 
 
 // CREATE POPUP SCREEN OF MATCH PREVIEW
-function createPopUp() {
+const createPopUp = () => {
 
     bracketContent.addEventListener('click', (e) => {
         const target = e.target
