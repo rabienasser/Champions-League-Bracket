@@ -161,6 +161,8 @@ function quarterFinalStageCheck() {
 function semiFinalStageCheck() {
     if(!f1.classList.contains('empty-row') && !f2.classList.contains('empty-row')) {
         document.querySelector('.s-stage-check').style.display = 'flex'
+    } else {
+        document.querySelector('.s-stage-check').style.display = 'none'
     }
 }
 
